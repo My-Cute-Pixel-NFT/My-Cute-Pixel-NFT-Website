@@ -1,107 +1,138 @@
-import { useQuery } from "@apollo/react-hooks";
-import { Contract } from "@ethersproject/contracts";
-import { getDefaultProvider } from "@ethersproject/providers";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { RiTwitterLine, RiInstagramLine, RiGithubLine } from "react-icons/ri";
+import Slide from 'react-reveal/Slide';
+import { MoralisProvider } from "react-moralis";
 
-import { Body, Button, Header, Image, Link } from "./components";
-import logo from "./ethereumLogo.png";
+import { Body, Header, Footer, TopLeft } from "./components/index";
+import Toggle from "./components/toggle";
+import Menu from "./components/menu";
+import WalletButton from "./components/wallet";
+import Inventory from "./components/balances";
+
 import useWeb3Modal from "./hooks/useWeb3Modal";
 
-import { addresses, abis } from "@project/contracts";
-import GET_TRANSFERS from "./graphql/subgraph";
+import Home from "./pages/Home";
+import PixelCryptoPuppies from "./pages/PixelCryptoPuppies";
+import TheMoeGirls from "./pages/TheMoeGirls";
+import Lunas from "./pages/Lunas";
 
-async function readOnChainData() {
-  // Should replace with the end-user wallet, e.g. Metamask
-  const defaultProvider = getDefaultProvider();
-  // Create an instance of an ethers.js Contract
-  // Read more about ethers.js on https://docs.ethers.io/v5/api/contract/contract/
-  const ceaErc20 = new Contract(addresses.ceaErc20, abis.erc20, defaultProvider);
-  // A pre-defined address that owns some CEAERC20 tokens
-  const tokenBalance = await ceaErc20.balanceOf("0x3f8CB69d9c0ED01923F11c829BaE4D9a4CB6c82C");
-  console.log({ tokenBalance: tokenBalance.toString() });
-}
+require('dotenv').config();
 
-function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
-  const [account, setAccount] = useState("");
-  const [rendered, setRendered] = useState("");
-
-  useEffect(() => {
-    async function fetchAccount() {
-      try {
-        if (!provider) {
-          return;
-        }
-
-        // Load the user's accounts.
-        const accounts = await provider.listAccounts();
-        setAccount(accounts[0]);
-
-        // Resolve the ENS name for the first account.
-        const name = await provider.lookupAddress(accounts[0]);
-
-        // Render either the ENS name or the shortened account address.
-        if (name) {
-          setRendered(name);
-        } else {
-          setRendered(account.substring(0, 6) + "..." + account.substring(36));
-        }
-      } catch (err) {
-        setAccount("");
-        setRendered("");
-        console.error(err);
-      }
-    }
-    fetchAccount();
-  }, [account, provider, setAccount, setRendered]);
-
-  return (
-    <Button
-      onClick={() => {
-        if (!provider) {
-          loadWeb3Modal();
-        } else {
-          logoutOfWeb3Modal();
-        }
-      }}
-    >
-      {rendered === "" && "Connect Wallet"}
-      {rendered !== "" && rendered}
-    </Button>
-  );
-}
+// Moralis
+const MORALIS_SERVER = process.env.REACT_APP_MORALIS_SERVER;
+const MORALIS_ID = process.env.REACT_APP_MORALIS_ID;
 
 function App() {
-  const { loading, error, data } = useQuery(GET_TRANSFERS);
-  const [provider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal();
+    const [navToggled, setNavToggled] = useState(false);
+    const [account, setAccount] = useState("");
 
-  React.useEffect(() => {
-    if (!loading && !error && data && data.transfers) {
-      console.log({ transfers: data.transfers });
+    const handleNavToggle = () => {
+      setNavToggled(!navToggled);
+      setMenuButColor("#6c718c");
     }
-  }, [loading, error, data]);
 
-  return (
-    <div>
-      <Header>
-        <WalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} logoutOfWeb3Modal={logoutOfWeb3Modal} />
-      </Header>
-      <Body>
-        <Image src={logo} alt="react-logo" />
-        <p>
-          Edit <code>packages/react-app/src/App.js</code> and save to reload.
-        </p>
-        {/* Remove the "hidden" prop and open the JavaScript console in the browser to see what this function does */}
-        <Button hidden onClick={() => readOnChainData()}>
-          Read On-Chain Balance
-        </Button>
-        <Link href="https://ethereum.org/developers/#getting-started" style={{ marginTop: "8px" }}>
-          Learn Ethereum
-        </Link>
-        <Link href="https://reactjs.org">Learn React</Link>
-        <Link href="https://thegraph.com/docs/quick-start">Learn The Graph</Link>
-      </Body>
-    </div>
-  );
+    const [provider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal();
+
+    const [menuButColor, setMenuButColor] = useState("#6c718c");
+    const [socialBut1Color, setSocialBut1Color] = useState("#e8f8f8");
+    const [socialBut2Color, setSocialBut2Color] = useState("#e8f8f8");
+    const [socialBut3Color, setSocialBut3Color] = useState("#e8f8f8");
+
+    const menuButStyle={
+      color:`${menuButColor}`
+    };
+    const socialBut1Style={
+      color:`${socialBut1Color}`
+    };
+    const socialBut2Style={
+      color:`${socialBut2Color}`
+    };
+    const socialBut3Style={
+      color:`${socialBut3Color}`
+    };
+
+    const handleButColorEnter = () => {
+      setMenuButColor("#ffbbc2");
+    };
+    const handleButColorLeave = () => {
+      if (navToggled) setMenuButColor("#e8f8f8");
+      else setMenuButColor("#6c718c");
+    };
+
+    const handleSoc1ColorEnter = () => {
+      setSocialBut1Color("#ffbbc2");
+    };
+    const handleSoc1ColorLeave = () => {
+      setSocialBut1Color("#e8f8f8");
+    };
+
+    const handleSoc2ColorEnter = () => {
+      setSocialBut2Color("#ffbbc2");
+    };
+    const handleSoc2ColorLeave = () => {
+      setSocialBut2Color("#e8f8f8");
+    };
+
+    const handleSoc3ColorEnter = () => {
+      setSocialBut3Color("#ffbbc2");
+    };
+    const handleSoc3ColorLeave = () => {
+      setSocialBut3Color("#e8f8f8");
+    };
+
+    return (
+      <MoralisProvider appId={MORALIS_ID} serverUrl={MORALIS_SERVER}>
+          <div>
+            <Header>
+              <Toggle style={menuButStyle} handleNavToggle={handleNavToggle} 
+              handleButColorEnter={handleButColorEnter} handleButColorLeave={handleButColorLeave} />
+              <TopLeft>
+                <WalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} account={account} 
+                setAccount={setAccount} logoutOfWeb3Modal={logoutOfWeb3Modal} />
+                <Inventory account={account} />
+              </TopLeft>
+            </Header>
+            <Body>
+              <Router>
+                { navToggled ? 
+                <Menu style={menuButStyle} handleNavToggle={handleNavToggle} 
+                handleButColorEnter={handleButColorEnter} handleButColorLeave={handleButColorLeave} /> 
+                : null }
+                <Routes>
+                  <Route exact path="/" element={<Home />} />
+                  <Route exact path="/PixelCryptoPuppies" element={<PixelCryptoPuppies account={account} />} />
+                  <Route exact path="/TheMoeGirls" element={<TheMoeGirls account={account} />} />
+                  <Route exact path="/Lunas" element={<Lunas />} />
+                </Routes>
+              </Router>
+            </Body>
+            <Footer>
+                <Slide left>
+                  <a href="https://twitter.com/mycutepixel_nft" target="_blank" rel="noreferrer"
+                  style={socialBut1Style} onMouseEnter={handleSoc1ColorEnter} 
+                  onMouseLeave={handleSoc1ColorLeave}>
+                    <RiTwitterLine />
+                  </a>
+                </Slide>
+                <Slide bottom>
+                  <a href="https://www.instagram.com/my.cute.pixel.nft" target="_blank" rel="noreferrer"
+                  style={socialBut2Style} onMouseEnter={handleSoc2ColorEnter} 
+                  onMouseLeave={handleSoc2ColorLeave}>
+                    <RiInstagramLine />
+                  </a>
+                </Slide>
+                <Slide right>
+                  <a href="/#"
+                  style={socialBut3Style} onMouseEnter={handleSoc3ColorEnter} 
+                  onMouseLeave={handleSoc3ColorLeave}>
+                    <RiGithubLine />
+                  </a>
+                </Slide>
+            </Footer>
+          </div>
+      </MoralisProvider>
+    );
 }
 
 export default App;

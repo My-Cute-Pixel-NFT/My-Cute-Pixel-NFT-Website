@@ -1,7 +1,8 @@
-// This address points to a dummy ERC20 contract deployed on Ethereum Mainnet,
-// Goerli, Kovan, Rinkeby and Ropsten. Replace it with your smart contracts.
 const addresses = {
   ceaErc20: "0xc1C0472c0C80bCcDC7F5D01A376Bd97a734B8815",
+  puppies: process.env.REACT_APP_CONTRACT_ADDRESS_PUPPIES,
+  moegirls: process.env.REACT_APP_CONTRACT_ADDRESS_MOEGIRLS,
+  lunas: process.env.REACT_APP_CONTRACT_ADDRESS_LUNAS
 };
 
 export default addresses;
