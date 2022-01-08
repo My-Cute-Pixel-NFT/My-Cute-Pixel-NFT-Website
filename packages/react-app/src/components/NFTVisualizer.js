@@ -145,8 +145,13 @@ function NFTVisualizer({ account, collection }) {
         for (let i = 0; i < ids.length; i++) {
             options.token_id = ids[i];
             const tokenIdOwners = await Moralis.Web3API.token.getTokenIdOwners(options);
-            if (tokenIdOwners.result.length > 0) {
-              setOwners(owners => [...owners, tokenIdOwners.result[0].owner_of]);
+            const ownersNumber = tokenIdOwners.result.length;
+            if (ownersNumber > 0) {
+              if (ownersNumber === 1) {
+                setOwners(owners => [...owners, tokenIdOwners.result[0].owner_of]);
+              } else {
+                setOwners(owners => [...owners, tokenIdOwners.result.map(a => a.owner_of)]);
+              }
             } else {
               setOwners(owners => [...owners, ""]);
             }
@@ -177,7 +182,21 @@ function NFTVisualizer({ account, collection }) {
         getNftOwners();
       }
 
-      setUniqueOwners([...new Set(owners)]);
+      setTrueUniqueOwners(owners);
+      
+      function setTrueUniqueOwners(owners) {
+        let temp = [];
+        owners.forEach(nftOwners => {
+          if (nftOwners instanceof Array) {
+            nftOwners.forEach(owner => {
+              temp.push(owner);
+            });
+          } else {
+            temp.push(nftOwners);
+          }
+        });
+        setUniqueOwners([...new Set(temp)]);
+      }
 
     }, [account, symb, displayConnectMessage, mounted1, mounted2, owners, Moralis.Web3API.token]);
 
@@ -228,10 +247,10 @@ function NFTVisualizer({ account, collection }) {
                 </div>
                 <Carousel style={{"width":"110%", "margin":"20px 0 0 0"}}>
                     {
-                        uniqueOwners.map((owner, j) =>
+                        uniqueOwners.map((nftOwners, j) =>
                             <Carousel.Item interval={1000} key={j}>
                                 <InsideCarrousel style={{"marginBottom":"2.5rem"}}>
-                                    {owner.substring(0, 2)} <br/> {owner.substring(3)} <br/>
+                                    {nftOwners.substring(0, 2)} <br/> {nftOwners.substring(3)} <br/>
                                 </InsideCarrousel>
                             </Carousel.Item>
                         )
@@ -319,7 +338,7 @@ const Overlay = styled.div`
   }
 `;
 
-const InsideCarrousel = styled.p`
+const InsideCarrousel = styled.div`
   text-align: center;
   @media(max-width: 920px) {
     font-size: 15px;

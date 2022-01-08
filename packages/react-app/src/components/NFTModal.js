@@ -64,13 +64,23 @@ const NFTModal = (props) => {
 }
 
 function Owner({owner, account}) {
-  if (typeof(owner) === "Array") {
-    // TODO
-    return(
-      <p style={{"fontSize":"16px", "color":"#c5d7e0", "textAlign":"center"}}>
-        You! <span style={{"fontSize":"20px", "color":"#ffbbc2"}}>♡</span> (and {owner.length-1} others)
-      </p>
-    );
+  if (Array.isArray(owner)) {
+    const index = owner.findIndex(element => {
+      return element.toLowerCase() === account.toLowerCase();
+    });
+    if (index !== -1) {
+        return(
+          <p style={{"fontSize":"16px", "color":"#c5d7e0", "textAlign":"center"}}>
+            You! <span style={{"fontSize":"20px", "color":"#ffbbc2"}}>♡</span> (and {owner.length-1} others)
+          </p>
+        );
+    } else {
+        return (
+          <p style={{"fontSize":"16px", "color":"#c5d7e0", "textAlign":"center"}}>
+            {owner.length} people.
+          </p>
+          );
+    }
   } else if (owner !== "") {
     if (account.toUpperCase() === owner.toUpperCase()) {
         return(
