@@ -123,7 +123,7 @@ function App() {
                   </a>
                 </Slide>
                 <Slide right>
-                  <a href="/#"
+                  <a href="https://github.com/My-Cute-Pixel-NFT"
                   style={socialBut3Style} onMouseEnter={handleSoc3ColorEnter} 
                   onMouseLeave={handleSoc3ColorLeave}>
                     <RiGithubLine />
