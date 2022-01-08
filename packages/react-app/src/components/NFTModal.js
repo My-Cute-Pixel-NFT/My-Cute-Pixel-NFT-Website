@@ -38,7 +38,7 @@ const NFTModal = (props) => {
       <ModalContent>
         <ModalGrid>
           <div>
-            <NftPhoto style={{backgroundImage: `url(${nft.image_url})`, "height":width, "width":height,
+            <NftPhoto style={{backgroundImage: `url(${nft.image_url})`, "height":height, "width":width,
             "backgroundSize":"100%", "backgroundRepeat":"no-repeat"}} />
             <SectionText style={{"fontSize":"19px"}}> Owned by: </SectionText>
             <Owner owner={owner} account={account} />
