@@ -64,7 +64,14 @@ const NFTModal = (props) => {
 }
 
 function Owner({owner, account}) {
-  if (owner) {
+  if (typeof(owner) === "Array") {
+    // TODO
+    return(
+      <p style={{"fontSize":"16px", "color":"#c5d7e0", "textAlign":"center"}}>
+        You! <span style={{"fontSize":"20px", "color":"#ffbbc2"}}>♡</span> (and {owner.length-1} others)
+      </p>
+    );
+  } else if (owner !== "") {
     if (account.toUpperCase() === owner.toUpperCase()) {
         return(
           <p style={{"fontSize":"16px", "color":"#c5d7e0", "textAlign":"center"}}>

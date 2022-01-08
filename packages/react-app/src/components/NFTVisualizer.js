@@ -147,6 +147,8 @@ function NFTVisualizer({ account, collection }) {
             const tokenIdOwners = await Moralis.Web3API.token.getTokenIdOwners(options);
             if (tokenIdOwners.result.length > 0) {
               setOwners(owners => [...owners, tokenIdOwners.result[0].owner_of]);
+            } else {
+              setOwners(owners => [...owners, ""]);
             }
         }
       }
