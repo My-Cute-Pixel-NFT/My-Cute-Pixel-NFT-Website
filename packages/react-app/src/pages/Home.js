@@ -73,10 +73,10 @@ const Home = () => {
                     So, let's get to it!
                     <RiArrowDownSFill style={{"color":"#ffbbc2" }} size={40} />
                     <br />
-                    <p style={{"display":"flex", "justifyContent":"center"}}>
-                        {"( >ω< )"}
-                    </p>
                 </Paragraph>
+                <p style={{"display":"flex", "width":"100%", "marginTop":"-1rem", "justifyContent":"center"}}>
+                    {"( >ω< )"}
+                </p>
                 <Tabs style={{"width":"100%", "alignSelf":"center", "marginTop":"2rem"}}>
                     <TabList style={{"display":"flex", "flexDirection":"column", "alignItems":"stretch"}}>
                         <TabTitlesSize>
