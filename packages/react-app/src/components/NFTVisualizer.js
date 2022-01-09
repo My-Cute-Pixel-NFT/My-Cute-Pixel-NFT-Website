@@ -38,7 +38,7 @@ function NFTVisualizer({ account, collection }) {
     const [message1, setMessage1] = useState("");
     const [message2, setMessage2] = useState("");
     const [owners, setOwners] = useState([]);
-    const [uniqueOwners, setUniqueOwners] = useState([]);
+    const [nonRepeteatedOwners, setNonRepeteatedOwners] = useState([]);
     const [mounted1, setMounted1] = useState(true);
     const [mounted2, setMounted2] = useState(true);
 
@@ -182,9 +182,9 @@ function NFTVisualizer({ account, collection }) {
         getNftOwners();
       }
 
-      setTrueUniqueOwners(owners);
+      determineNonRepeteatedOwners(owners);
       
-      function setTrueUniqueOwners(owners) {
+      function determineNonRepeteatedOwners(owners) {
         let temp = [];
         owners.forEach(nftOwners => {
           if (nftOwners instanceof Array) {
@@ -195,7 +195,7 @@ function NFTVisualizer({ account, collection }) {
             temp.push(nftOwners);
           }
         });
-        setUniqueOwners([...new Set(temp)]);
+        setNonRepeteatedOwners([...new Set(temp)]);
       }
 
     }, [account, symb, displayConnectMessage, mounted1, mounted2, owners, Moralis.Web3API.token]);
@@ -243,11 +243,11 @@ function NFTVisualizer({ account, collection }) {
                     </Grid>
                 </div>
                 <div style={{"width":"100%", "margin":"40px 12px 0 12px"}}>
-                    There currently are {uniqueOwners.length} holders of this collection:
+                    There currently are {nonRepeteatedOwners.length} holders of this collection:
                 </div>
                 <Carousel style={{"width":"110%", "margin":"20px 0 0 0"}}>
                     {
-                        uniqueOwners.map((nftOwners, j) =>
+                        nonRepeteatedOwners.map((nftOwners, j) =>
                             <Carousel.Item interval={1000} key={j}>
                                 <InsideCarrousel style={{"marginBottom":"2.5rem"}}>
                                     {nftOwners.substring(0, 2)} <br/> {nftOwners.substring(3)} <br/>
