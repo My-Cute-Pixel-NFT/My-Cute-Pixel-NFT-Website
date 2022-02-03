@@ -20,13 +20,17 @@ const NETWORK = process.env.REACT_APP_NETWORK;
 const axios = require('axios');
 
 function NFTVisualizer({ account, collection }) {
+
+    let initName = "";
+    if (collection === "TPCP") initName = "Pixel Crypto Puppy";
+    else initName = "Moe Girl";
   
     let initialNfts =
     [
-        { name: "Pixel Crypto Puppy", symbol: "TPCP", copies: 0, image_url: "./../img/TitleGif.gif" },
-        { name: "Pixel Crypto Puppy", symbol: "TPCP", copies: 0, image_url: "./../img/TitleGif.gif" },
-        { name: "Pixel Crypto Puppy", symbol: "TPCP", copies: 0, image_url: "./../img/TitleGif.gif" },
-        { name: "Pixel Crypto Puppy", symbol: "TPCP", copies: 0, image_url: "./../img/TitleGif.gif" },
+        { name: initName, symbol: collection, copies: 0, image_url: "./../img/TitleGif.gif" },
+        { name: initName, symbol: collection, copies: 0, image_url: "./../img/TitleGif.gif" },
+        { name: initName, symbol: collection, copies: 0, image_url: "./../img/TitleGif.gif" },
+        { name: initName, symbol: collection, copies: 0, image_url: "./../img/TitleGif.gif" },
     ];
       
     const [showModal, setShowModal] = useState(false);
@@ -228,8 +232,7 @@ function NFTVisualizer({ account, collection }) {
                                     <br />
                                     If you already have, wait a few seconds till we retrieve the data from the blockchain.
                                     <br />
-                                    This process may take much longer in a mobilie device. For a much faster experience, 
-                                    use a computer.
+                                    Depending on the blockchain congestion, this may sometimes take up to a few minutes.
                                 </p>
                             </Flash>
                         </Connect>

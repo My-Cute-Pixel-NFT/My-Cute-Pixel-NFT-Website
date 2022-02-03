@@ -37,11 +37,13 @@ const NFTModal = (props) => {
     <Modal>
       <ModalContent>
         <ModalGrid>
-          <div>
-            <NftPhoto style={{backgroundImage: `url(${nft.image_url})`, "height":height, "width":width,
-            "backgroundSize":"100%", "backgroundRepeat":"no-repeat"}} />
-            <SectionText style={{"fontSize":"19px"}}> Owned by: </SectionText>
-            <Owner owner={owner} account={account} />
+          <div style={{"width":"100%","display":"flex","flexWrap":"wrap"}}>
+            <div>
+              <NftPhoto style={{backgroundImage: `url(${nft.image_url})`, "height":height, "width":width,
+              "backgroundSize":"100%", "backgroundRepeat":"no-repeat"}} />
+              <SectionText style={{"fontSize":"19px"}}> Owned by: </SectionText>
+              <Owner owner={owner} account={account} />
+            </div>
             <Attributes nft={nft} collection={collection} target={"TMG"}/>
           </div>
           <div>
@@ -119,11 +121,11 @@ function Attributes({nft, collection, target}) {
           {nft.properties &&
             nft.properties.map((property, i) =>
               <div key={i} >
-                <div style={{margin: "10px 0px 5px 0px", "display":"flex", "justifyContent":"space-between"}}>
+                <div style={{margin: "10px 0px 5px 0px", "display":"flex", "justifyContent":"space-between", "flexWrap":"wrap"}}>
                     <AttributeText> {
-                        property.display_type === "boost_number" ? "Value Boost (" + property.trait_type + ")" : 
-                        property.display_type === "boost_percentage" ? "% Boost (" + property.trait_type + ")" : 
-                        property.trait_type }
+                        property.display_type === "boost_number" ? "Value Boost (" + property.trait_type + "): " : 
+                        property.display_type === "boost_percentage" ? "% Boost (" + property.trait_type + "): " : 
+                        property.trait_type + ": " }
                     </AttributeText>
                     <AttributeText style={{float: "right", "fontWeight":"100"}}> {property.value} </AttributeText>
                 </div>
