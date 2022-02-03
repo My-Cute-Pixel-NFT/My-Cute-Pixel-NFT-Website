@@ -10,7 +10,6 @@ a single pass. Dependencies are hoisted at the root.
 ```
 my-eth-app
 ├── README.md
-├── node_modules
 ├── package.json
 ├── .gitignore
 └── packages
@@ -19,30 +18,50 @@ my-eth-app
     │   ├── package.json
     │   └── src
     │       ├── abis
-    │       │   ├── erc20.json
-    │       │   └── ownable.json
+    │       │   ├── erc1155.json
     │       ├── addresses.js
-    │       └── index.js
+    │       ├── index.js
+    │       └── tokens.js
+    ├── hooks
+    │   ├── useWeb3Modal.js
+    ├── img
+    ├── pages
+    │   ├── Home.js
+    │   ├── Lunas.js
+    │   ├── PixelCryptoPuppies.js
+    │   ├── TheMoeGirls.js
     ├── react-app
         ├── README.md
-        ├── node_modules
+        ├── .htaccess
+        ├── components
+            ├── NFTCard.js
+            ├── NFTModal.js
+            ├── NFTProgressBar.js
+            ├── NFTVisualizer.js
+            ├── balances.js
+            ├── collectionPagesComponents.js
+            ├── index.js
+            ├── menu.js
+            ├── toggle.js
+            └── wallet.js
         ├── package.json
         ├── public
         │   ├── favicon.ico
+        │   ├── favicon32.ico
         │   ├── index.html
+        │   ├── logo.png
         │   ├── logo192.png
         │   ├── logo512.png
         │   ├── manifest.json
         │   └── robots.txt
         └── src
-            ├── App.css
             ├── App.js
             ├── App.test.js
-            ├── ethereumLogo.svg
+            ├── helpers.js
             ├── index.css
             ├── index.js
-            ├── serviceWorker.js
-            └── setupTests.js
+            ├── setupTests.js
+            └── tabs.css
 
 ```
 
