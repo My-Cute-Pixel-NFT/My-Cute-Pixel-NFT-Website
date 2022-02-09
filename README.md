@@ -63,7 +63,6 @@ my-eth-app
             ├── index.js
             ├── setupTests.js
             └── tabs.css
-
 ```
 
 Owing to this dependency on Yarn Workspaces, Create Eth App can't be used with npm.
