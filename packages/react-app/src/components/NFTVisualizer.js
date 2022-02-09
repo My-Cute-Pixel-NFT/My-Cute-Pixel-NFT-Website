@@ -165,12 +165,12 @@ function NFTVisualizer({ account, collection }) {
       if (displayConnectMessage === "flex" && mounted1) {
         setMounted1(false);
         getNfts(account);
-      }
-      if (window.ethereum) {
-        window.ethereum.on("accountsChanged", (accounts) => {
+        if (window.ethereum) {
+          window.ethereum.on("accountsChanged", (accounts) => {
             setDisplayConnectMessage("flex");
             setMounted1(true);
-        });
+          });
+        }
       }
 
       if (symb === "TPCP") {

@@ -19,33 +19,15 @@ my-eth-app
     │   └── src
     │       ├── abis
     │       │   ├── erc1155.json
+    |       ├── abis.js
     │       ├── addresses.js
     │       ├── index.js
     │       └── tokens.js
-    ├── hooks
-    │   ├── useWeb3Modal.js
-    ├── img
-    ├── pages
-    │   ├── Home.js
-    │   ├── Lunas.js
-    │   ├── PixelCryptoPuppies.js
-    │   ├── TheMoeGirls.js
     ├── react-app
         ├── README.md
         ├── .htaccess
-        ├── components
-            ├── NFTCard.js
-            ├── NFTModal.js
-            ├── NFTProgressBar.js
-            ├── NFTVisualizer.js
-            ├── balances.js
-            ├── collectionPagesComponents.js
-            ├── index.js
-            ├── menu.js
-            ├── toggle.js
-            └── wallet.js
         ├── package.json
-        ├── public
+        └── public
         │   ├── favicon.ico
         │   ├── favicon32.ico
         │   ├── index.html
@@ -54,7 +36,26 @@ my-eth-app
         │   ├── logo512.png
         │   ├── manifest.json
         │   └── robots.txt
-        └── src
+        ├── src
+            ├── components
+                ├── balances.js
+                ├── collectionPagesComponents.js
+                ├── index.js
+                ├── menu.js
+                ├── NFTCard.js
+                ├── NFTModal.js
+                ├── NFTProgressBar.js
+                ├── NFTVisualizer.js
+                ├── toggle.js
+                └── wallet.js
+            ├── hooks
+                ├── useWeb3Modal.js
+            ├── img 
+            ├── Pages
+                ├── Home.js
+                ├── Lunas.js
+                ├── PixelCryptoPuppies.js
+                └── TheMoeGirls.js
             ├── App.js
             ├── App.test.js
             ├── helpers.js
