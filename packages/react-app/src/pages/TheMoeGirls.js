@@ -12,7 +12,7 @@ import fullchibi from "./../img/fullchibi.png";
 import chibi1 from "./../img/chibi1.png";
 import chibi2 from "./../img/chibi2.png";
 import chibi3 from "./../img/chibi3.png";
-import chibi5 from "./../img/chibi5.png";
+import chibi4 from "./../img/chibi4.png";
 import girls from "./../img/allGirls.gif";
 import opensea from "./../img/opensea.png";
 import roadmap from "./../img/moeRoadmap.gif";
@@ -121,15 +121,19 @@ const TheMoeGirls = (account) => {
                     </Carousel.Item>
                 </Carousel>
                 <PokkoRoadmap>
-                    <Image src={chibi5} alt="chibi-happy" 
+                    <Image src={chibi4} alt="chibi-amazed" 
                            style={{"alignSelf":"center", "width":"200px", "height":"auto"}} />
                     <p style={{"textAlign":"center"}}>
-                        Hey, there are still a few Moe Girls available! You are so lucky! You can get yours
-                        from OpenSea right now, if you want. You can find the link below the roadmap.
+                        Wow, this collection has sold out! But don't worry, you can still buy Moe Girls
+                        in the secondary market. You'll find the link to OpenSea below the roadmap.
                     </p>
                 </PokkoRoadmap>
                 <Image src={roadmap} alt="moe-girls-roadmap" 
                 style={{"alignSelf":"center", "marginTop":"1rem", "width":"50%", "height":"auto", "minWidth":"355px", "maxWidth":"700px"}} />
+                <Paragraph>We accept commissions for this collection! You'll find more than 32 Moe Girls in OpenSea
+                           because of this and due to the special Christmas Editions that were given to early buyers.
+                           If you want your own, custom Moe Girl, based on any character you like, contact us on Twitter.
+                </Paragraph>
                 <DivTextImage>
                     <Link href="https://opensea.io/collection/the-moe-girls" style={{"display":"flex", "flexDirection":"column"}}>
                         <Fade right duration={3000}>

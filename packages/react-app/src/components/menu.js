@@ -21,6 +21,9 @@ const Menu = ({style, handleNavToggle, handleButColorEnter, handleButColorLeave}
                 New Collection
             </StyledLink>
             <Label style={{"marginTop":"-20px"}}>(to be announced)</Label>
+            <StyledLink onClick={handleNavToggle} to="/Commissions">
+                Commissions
+            </StyledLink>
             <CloseToggle style={style} onClick={handleNavToggle} onMouseEnter={handleButColorEnter} 
             onMouseLeave={handleButColorLeave}>
                 <FaRegStar />

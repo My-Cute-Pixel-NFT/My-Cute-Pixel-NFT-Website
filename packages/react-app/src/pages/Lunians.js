@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Lunas = () => {
     return (
         <StyledLunas>
-            <Heading>Lunas!</Heading>
+            <Heading>Lunians!</Heading>
             <Content>
             <h1>👋 Hey there </h1>
             <p>Like what you see?</p>

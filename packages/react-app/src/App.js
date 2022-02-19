@@ -15,7 +15,8 @@ import useWeb3Modal from "./hooks/useWeb3Modal";
 import Home from "./pages/Home";
 import PixelCryptoPuppies from "./pages/PixelCryptoPuppies";
 import TheMoeGirls from "./pages/TheMoeGirls";
-import Lunas from "./pages/Lunas";
+import Lunians from "./pages/Lunians";
+import Commissions from "./pages/Commissions";
 
 require('dotenv').config();
 
@@ -103,7 +104,8 @@ function App() {
                   <Route exact path="/" element={<Home />} />
                   <Route exact path="/PixelCryptoPuppies" element={<PixelCryptoPuppies account={account} />} />
                   <Route exact path="/TheMoeGirls" element={<TheMoeGirls account={account} />} />
-                  <Route exact path="/Lunas" element={<Lunas />} />
+                  <Route exact path="/Lunians" element={<Lunians />} />
+                  <Route exact path="/Commissions" element={<Commissions />} />
                 </Routes>
               </Router>
             </Body>
