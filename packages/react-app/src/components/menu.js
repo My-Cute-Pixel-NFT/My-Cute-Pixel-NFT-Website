@@ -11,16 +11,15 @@ const Menu = ({style, handleNavToggle, handleButColorEnter, handleButColorLeave}
             <StyledLink onClick={handleNavToggle} to="/">
                 Home
             </StyledLink>
-            <StyledLink onClick={handleNavToggle} to="/PixelCryptoPuppies">
-                Pixel Crypto Puppies
+            <StyledLink onClick={handleNavToggle} to="/Lunians">
+                Lunians
             </StyledLink>
             <StyledLink onClick={handleNavToggle} to="/TheMoeGirls">
                 The Moe Girls
             </StyledLink>
-            <StyledLink style={{"cursor":"default"}} to="/">
-                New Collection
+            <StyledLink onClick={handleNavToggle} to="/PixelCryptoPuppies">
+                Pixel Crypto Puppies
             </StyledLink>
-            <Label style={{"marginTop":"-20px"}}>(to be announced)</Label>
             <StyledLink onClick={handleNavToggle} to="/Commissions">
                 Commissions
             </StyledLink>

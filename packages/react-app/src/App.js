@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { RiTwitterLine, RiInstagramLine, RiGithubLine } from "react-icons/ri";
+import { RiTwitterLine, RiInstagramLine, RiMediumLine, RiGithubLine } from "react-icons/ri";
 import Slide from 'react-reveal/Slide';
 import { MoralisProvider } from "react-moralis";
 
@@ -39,6 +39,7 @@ function App() {
     const [socialBut1Color, setSocialBut1Color] = useState("#e8f8f8");
     const [socialBut2Color, setSocialBut2Color] = useState("#e8f8f8");
     const [socialBut3Color, setSocialBut3Color] = useState("#e8f8f8");
+    const [socialBut4Color, setSocialBut4Color] = useState("#e8f8f8");
 
     const menuButStyle={
       color:`${menuButColor}`
@@ -51,6 +52,9 @@ function App() {
     };
     const socialBut3Style={
       color:`${socialBut3Color}`
+    };
+    const socialBut4Style={
+      color:`${socialBut4Color}`
     };
 
     const handleButColorEnter = () => {
@@ -80,6 +84,13 @@ function App() {
     };
     const handleSoc3ColorLeave = () => {
       setSocialBut3Color("#e8f8f8");
+    };
+
+    const handleSoc4ColorEnter = () => {
+      setSocialBut4Color("#ffbbc2");
+    };
+    const handleSoc4ColorLeave = () => {
+      setSocialBut4Color("#e8f8f8");
     };
 
     return (
@@ -119,9 +130,16 @@ function App() {
                 </Slide>
                 <Slide bottom>
                   <a href="https://www.instagram.com/my.cute.pixel.nft" target="_blank" rel="noreferrer"
+                  style={socialBut4Style} onMouseEnter={handleSoc4ColorEnter} 
+                  onMouseLeave={handleSoc4ColorLeave}>
+                    <RiInstagramLine />
+                  </a>
+                </Slide>
+                <Slide bottom>
+                  <a href="https://mycutepixel-nft.medium.com" target="_blank" rel="noreferrer"
                   style={socialBut2Style} onMouseEnter={handleSoc2ColorEnter} 
                   onMouseLeave={handleSoc2ColorLeave}>
-                    <RiInstagramLine />
+                    <RiMediumLine />
                   </a>
                 </Slide>
                 <Slide right>

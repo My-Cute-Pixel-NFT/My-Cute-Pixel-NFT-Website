@@ -64,6 +64,11 @@ function Inventory({ account }) {
                 <InventoryImage src={moe} alt="moe-logo" />
                 <div style={{"color":"#d3d3d3"}}>x{totalMoe}</div>
             </div>
+            {/*<div style={{"height":"15px", "width":"15px"}}/>
+            <div data-tip data-for="registerTipMoe" style={{"display":"flex"}}>
+                <div style={{"color":"#d3d3d3", "width":"32px"}}>?</div>
+                <div style={{"color":"#d3d3d3"}}>x0</div>
+            </div>*/}
 
             <ReactTooltip id="registerTipPuppies" place="right" effect="solid">
                 {toolTipPuppies}
