@@ -2,16 +2,23 @@ import React from 'react';
 import ReactTooltip from 'react-tooltip';
 import styled from 'styled-components';
 
-import { Image, Link } from "./../components/index";
+import { Image } from "./../components/index";
 //import NFTVisualizer from "./../components/NFTVisualizer";
-import { StyledCollection, Heading, Content, OpenSea, DivTextImage, DivImage, NavigateMsg, Paragraph, 
-         Item, InsideItem, EnumItem } from "./../components/collectionPagesComponents";
+import MediumCard from "./../components/flipCard";
+import { StyledCollection, Heading, Content, Paragraph } from 
+"./../components/collectionPagesComponents";
 
 import banner from "./../img/SpaceBackground200.png";
 import lunia from "./../img/Lunia.gif";
 import lunianseedpod from "./../img/LunianSeedpod.png";
+import animatedlunianseedpod from "./../img/AnimatedLunianSeedpod.gif";
+import blackhole from "./../img/BlackHole.jpg";
 
 let toolTipCredits = "Planet and background created using Deep-Fold's <br/> Planet and Space generators";
+let abstract1 = "\"A riveting tale about forces of cosmic proportions\".";
+let abstract2 = "\"A planet full of mysteries and strange creatures\".";
+let link1 = "https://medium.com/@mycutepixel-nft/origins-2ff7364458aa";
+let link2 = "https://medium.com/@mycutepixel-nft/lunia-fca028acc38a";
 
 const Lunians = () => {
     return (
@@ -32,14 +39,30 @@ const Lunians = () => {
                 </Paragraph>
 
                 <Paragraph>
-                    The information gathered about this planet so far is scarce, but it is believed 
-                    Lunia was formed when a primordial black hole collapsed in on itself.
+                    The land of the Lunians, formed when a primordial black hole collapsed in on itself.
+                    Little by little, this planet seems to be revealing some of its many secrets...
                 </Paragraph>
 
-                <Image src={lunianseedpod} alt="lunian-seedpod" style={{"alignSelf":"center", 
-                    "marginTop":"2rem", "marginBottom":"2rem"}} />
+                <div style={{"width":"100%", "position":"relative", "textAlign":"center", "marginTop":"2rem", 
+                    "marginBottom":"2rem", "borderStyle":"groove", "borderColor":"rgb(179, 227, 227)",
+                    "display":"flex", "justifyContent":"center", "flexDirection":"column", "alignItems":"center"}}>
+                    <div style={{"marginTop":"-1.3rem", "background":"#3f396b", "width":"fit-content",
+                        "padding":"0 0.8rem 0 0.8rem", "fontFamily":"Tiny BoxBitA10, sans-serif"}}>
+                        DISCOVER MORE
+                    </div>
+                    <Grid style={{"margin":"1rem 2rem 0.5rem 2rem", "columnGap":"10px",
+                        "justifyItems":"stretch"}}>
+                        <MediumCard frontImage={blackhole} frontTitle="Origins" backText={abstract1} link={link1} />
+                        <MediumCard frontImage={lunia} frontTitle="Lunia" backText={abstract2} link={link2}/>
+                        <MediumCard />
+                        <MediumCard />
+                    </Grid>
+                </div>
 
-                <Coming>Coming soon!</Coming>
+                <Image src={lunianseedpod} alt="lunian-seedpod" style={{"alignSelf":"center", 
+                    "marginBottom":"2rem"}} />
+
+                <Coming>More coming soon!</Coming>
             </Content>
         </StyledCollection>
     )
@@ -66,4 +89,21 @@ const Coming = styled.div`
     color: rgb(179, 227, 227);
     font-family: 'Tiny BoxBitA10', sans-serif;
     font-size: clamp(1.25rem, 2vw, 3vw);
+`;
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  row-gap: 40px;
+  justify-items: center;
+
+  @media(max-width: 1200px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media(max-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media(max-width: 715px) {
+    grid-template-columns: 1fr;
+  }
 `;

@@ -74,22 +74,22 @@ const StyledLink = styled(Link)`
     }
 `;
 
-const Label = styled.div`
+/*const Label = styled.div`
     color: #c5d7e0;
     text-decoration: none;
     font-size: clamp(2rem, 3vw, 5vw);
     font-family: 'Ice Pixel7', sans-serif;
     transition: .2s all ease-in-out;
-    user-select: none; /* supported by Chrome and Opera */
-   -webkit-user-select: none; /* Safari */
-   -khtml-user-select: none; /* Konqueror HTML */
-   -moz-user-select: none; /* Firefox */
-   -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
     &:hover {
         transition: .2s all ease-in-out;
         color: #6c718c;
     }
-`;
+`;*/
 
 const CloseToggle = styled.button`
     position: fixed;

@@ -8338,6 +8338,13 @@ flatten@^1.0.2:
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.3.tgz#c1283ac9f27b368abc1e36d1ff7b04501a30356b"
   integrity sha512-dVsPA/UwQ8+2uoFe5GHtiBMu48dWLTdsuEd7CKGlZlD78r1TTWBvDuFaFGKCo/ZfEr95Uk56vZoX86OsHkUeIg==
 
+flip-toolkit@7.0.13:
+  version "7.0.13"
+  resolved "https://registry.yarnpkg.com/flip-toolkit/-/flip-toolkit-7.0.13.tgz#015d2d7ae4ef0abe3d1adff45fd98d4b63ef0202"
+  integrity sha512-9rj4mPk2FeKu/FW8Rvl3YrU8Hc7uSUYpzk3ZBeVF0xaaZsoVMLrfmffrDsrQgASvbTbd5kEf9yjfSwEZ+30cKg==
+  dependencies:
+    rematrix "0.2.2"
+
 flush-write-stream@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/flush-write-stream/-/flush-write-stream-1.1.1.tgz#8dd7d873a1babc207d94ead0c2e0e44276ebf2e8"
@@ -14357,7 +14364,7 @@ prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.6.2, prop-types@^15.7.2:
     object-assign "^4.1.1"
     react-is "^16.8.1"
 
-prop-types@^15.5.8, prop-types@^15.8.0:
+prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.8.0:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -14637,6 +14644,11 @@ react-bootstrap@^2.1.0:
     uncontrollable "^7.2.1"
     warning "^4.0.3"
 
+react-card-flip@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/react-card-flip/-/react-card-flip-1.1.5.tgz#bbda04b368949f3d9ee8b525c5c1e2c84b3dea90"
+  integrity sha512-cv3t8nCrO7Zqix4IT0Z9JQAul7k/WYzvnYIVUFobkjY1N3UC+5SnsASKkRt2ZOe3SHEe1fIql7Auieok6lKftg==
+
 react-dev-utils@^11.0.3:
   version "11.0.4"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-11.0.4.tgz#a7ccb60257a1ca2e0efe7a83e38e6700d17aa37a"
@@ -14712,6 +14724,14 @@ react-fade-in@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/react-fade-in/-/react-fade-in-2.0.1.tgz#b4bcd7dac63d6857ebcd68facbff2f5f9616278f"
   integrity sha512-oqS/WT4znaXEHmL+yo0IDUDY7uC9K4RP35j1SdRUEBspR09B2iIC0i8oJ28tPOr6Ez/L2aktF9p89j+DbsTVNw==
+
+react-flip-toolkit@^7.0.13:
+  version "7.0.13"
+  resolved "https://registry.yarnpkg.com/react-flip-toolkit/-/react-flip-toolkit-7.0.13.tgz#3dd0b58e0cc54c3420bcbf973df899d1d63cd626"
+  integrity sha512-HNsw07LPR9mduytuIzRhb/uslkxFkQlHoXFA2M3O0CutwKM9v7X0SK44uxJgo+S5iP2FeR8gTBSbq/fkrxYEfg==
+  dependencies:
+    flip-toolkit "7.0.13"
+    prop-types "^15.5.7"
 
 react-icons@^4.3.1:
   version "4.3.1"
@@ -15210,6 +15230,11 @@ relateurl@^0.2.7:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
+
+rematrix@0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/rematrix/-/rematrix-0.2.2.tgz#c96a050260782db9908904885991256e23beda5d"
+  integrity sha512-agFFS3RzrLXJl5LY5xg/xYyXvUuVAnkhgKO7RaO9J1Ssth6yvbO+PIiV67V59MB5NCdAK2flvGvNT4mdKVniFA==
 
 remedial@1.x:
   version "1.0.8"
