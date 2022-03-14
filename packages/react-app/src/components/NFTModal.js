@@ -84,6 +84,7 @@ function Owner({owner, account}) {
           );
     }
   } else if (owner !== "") {
+    if (typeof owner !== 'string') owner = "";
     if (account.toUpperCase() === owner.toUpperCase()) {
         return(
           <p style={{"fontSize":"16px", "color":"#c5d7e0", "textAlign":"center"}}>

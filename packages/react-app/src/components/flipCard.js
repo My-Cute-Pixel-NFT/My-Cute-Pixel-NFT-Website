@@ -14,7 +14,7 @@ function FlipCard({ frontImage, frontTitle, backText, link }) {
         return (
             <div style={{"maxHeight":"394px", "justifyContent":"center", "borderStyle":"ridge", 
                 "borderColor":"#8F48B8FF", "display": "flex", "alignItems":"center"}}>
-                More coming soon
+                New chapter soon
             </div>
         );
     } else {

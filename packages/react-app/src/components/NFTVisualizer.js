@@ -48,7 +48,53 @@ function NFTVisualizer({ account, collection }) {
 
     const { Moralis } = useMoralis();
 
-    const timer = ms => new Promise(res => setTimeout(res, ms))
+    const timer = ms => new Promise(res => setTimeout(res, ms));
+
+    async function getNftOwners() {
+      let collectionAddr;
+      let ids;
+      if (symb === "TPCP") {
+        collectionAddr = addresses.puppies;
+        ids = puppiesTokens;
+      } else if (symb === "TMG") {
+        collectionAddr = addresses.moegirls;
+        ids = moegirlsTokens;
+      }
+      const options = { 
+        address: collectionAddr, 
+        token_id: "", 
+        chain: NETWORK };
+      
+      for (let i = 0; i < ids.length; i++) {
+          options.token_id = ids[i];
+          const tokenIdOwners = await Moralis.Web3API.token.getTokenIdOwners(options);
+          await timer(335);
+          const ownersNumber = tokenIdOwners.result.length;
+          if (ownersNumber > 0) {
+            if (ownersNumber === 1) {
+              setOwners(owners => [...owners, tokenIdOwners.result[0].owner_of]);
+            } else {
+              setOwners(owners => [...owners, tokenIdOwners.result.map(a => a.owner_of)]);
+            }
+          } else {
+            setOwners(owners => [...owners, ""]);
+          }
+      }
+    }
+  
+    function determineNonRepeteatedOwners(owners) {
+      let temp = [];
+      owners.forEach(nftOwners => {
+        if (nftOwners instanceof Array) {
+          nftOwners.forEach(owner => {
+            temp.push(owner);
+          });
+        } else {
+          temp.push(nftOwners);
+        }
+      });
+      setNonRepeteatedOwners([...new Set(temp)]);
+    }
 
     useEffect(() => {
 
@@ -105,7 +151,7 @@ function NFTVisualizer({ account, collection }) {
                 xhr.send();*/
                 // Waiting for OpenSea API for Polygon assets. In the meantime, insert the data:
                 metadata = {};
-                metadata.image_url = "https://mycutepixel-nft.com/reiko.png";
+                metadata.image_url = "https://www.mycutepixel-nft.com/reiko.png";
                 metadata.name = "Reiko-chan";
                 metadata.description = "H! We are the Reiko-chan septuplets and we are Moe Girl #1. " + 
                 "Our mom called us by the same name because she loves us all the same! We are calm, " +
@@ -128,37 +174,6 @@ function NFTVisualizer({ account, collection }) {
             }
             setNfts(tempArray);
             setDisplayConnectMessage("none");
-        }
-      }
-
-      async function getNftOwners() {
-        let collectionAddr;
-        let ids;
-        if (symb === "TPCP") {
-          collectionAddr = addresses.puppies;
-          ids = puppiesTokens;
-        } else if (symb === "TMG") {
-          collectionAddr = addresses.moegirls;
-          ids = moegirlsTokens;
-        }
-        const options = { 
-          address: collectionAddr, 
-          token_id: "", 
-          chain: NETWORK };
-        
-        for (let i = 0; i < ids.length; i++) {
-            options.token_id = ids[i];
-            const tokenIdOwners = await Moralis.Web3API.token.getTokenIdOwners(options);
-            const ownersNumber = tokenIdOwners.result.length;
-            if (ownersNumber > 0) {
-              if (ownersNumber === 1) {
-                setOwners(owners => [...owners, tokenIdOwners.result[0].owner_of]);
-              } else {
-                setOwners(owners => [...owners, tokenIdOwners.result.map(a => a.owner_of)]);
-              }
-            } else {
-              setOwners(owners => [...owners, ""]);
-            }
         }
       }
 
@@ -187,20 +202,6 @@ function NFTVisualizer({ account, collection }) {
       }
 
       determineNonRepeteatedOwners(owners);
-      
-      function determineNonRepeteatedOwners(owners) {
-        let temp = [];
-        owners.forEach(nftOwners => {
-          if (nftOwners instanceof Array) {
-            nftOwners.forEach(owner => {
-              temp.push(owner);
-            });
-          } else {
-            temp.push(nftOwners);
-          }
-        });
-        setNonRepeteatedOwners([...new Set(temp)]);
-      }
 
     }, [account, symb, displayConnectMessage, mounted1, mounted2, owners, Moralis.Web3API.token]);
 
