@@ -70,6 +70,10 @@
     "eject": "react-scripts eject",
     "ipfs": "yarn build && node scripts/ipfs.js",
     "start": "react-scripts start",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "analyse": "source-map-explorer build/static/js/main.*"
+  },
+  "devDependencies": {
+    "source-map-explorer": "^2.5.2"
   }
 }

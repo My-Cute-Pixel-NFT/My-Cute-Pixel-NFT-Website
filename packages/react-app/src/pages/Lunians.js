@@ -10,15 +10,18 @@ import { StyledCollection, Heading, Content, Paragraph } from
 
 import banner from "./../img/SpaceBackground200.png";
 import lunia from "./../img/Lunia.gif";
-import lunianseedpod from "./../img/LunianSeedpod.png";
+import poofpoof from "./../img/Poof-Poof.gif";
 import animatedlunianseedpod from "./../img/AnimatedLunianSeedpod.gif";
 import blackhole from "./../img/BlackHole.jpg";
+import lunianseedpodback from "./../img/LunianSeedpodBack.png";
 
 let toolTipCredits = "Planet and background created using Deep-Fold's <br/> Planet and Space generators";
 let abstract1 = "\"A riveting tale about forces of cosmic proportions\".";
 let abstract2 = "\"A planet full of mysteries and strange creatures\".";
+let abstract3 = "\"A wondrous device (or seed?) with a secret inside\".";
 let link1 = "https://medium.com/@mycutepixel-nft/origins-2ff7364458aa";
 let link2 = "https://medium.com/@mycutepixel-nft/lunia-fca028acc38a";
+let link3 = "https://mycutepixel-nft.medium.com/lunian-seedpod-9274a9ef2867";
 
 const Lunians = () => {
     return (
@@ -54,13 +57,13 @@ const Lunians = () => {
                         "justifyItems":"stretch"}}>
                         <MediumCard frontImage={blackhole} frontTitle="Origins" backText={abstract1} link={link1} />
                         <MediumCard frontImage={lunia} frontTitle="Lunia" backText={abstract2} link={link2}/>
-                        <MediumCard />
+                        <MediumCard frontImage={lunianseedpodback} frontTitle="Lunian Seedpods" backText={abstract3} link={link3}/>
                         <MediumCard />
                     </Grid>
                 </div>
 
-                <Image src={lunianseedpod} alt="lunian-seedpod" style={{"alignSelf":"center", 
-                    "marginBottom":"2rem"}} />
+                <Image src={poofpoof} alt="lunian-seedpod" style={{"alignSelf":"center", 
+                    "marginBottom":"0", "marginTop":"0"}} />
 
                 <Coming>More coming soon!</Coming>
             </Content>

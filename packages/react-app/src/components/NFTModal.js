@@ -100,7 +100,7 @@ function Owner({owner, account}) {
         }
         return (
           <p style={{"fontSize":fontSize, "color":"#c5d7e0", "textAlign":"center"}}>
-            {owner.substring(0, 2)} <br/> {owner.substring(3)}
+            {owner.substring(0, 2)} <br/> {owner.substring(2)}
           </p>
         );
     }

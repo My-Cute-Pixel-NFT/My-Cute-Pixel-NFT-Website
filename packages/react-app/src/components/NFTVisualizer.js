@@ -46,55 +46,15 @@ function NFTVisualizer({ account, collection }) {
     const [mounted1, setMounted1] = useState(true);
     const [mounted2, setMounted2] = useState(true);
 
-    const { Moralis } = useMoralis();
+    const { Moralis, isInitialized } = useMoralis();
+    if (!isInitialized) {
+        Moralis.start({
+        appId: process.env.REACT_APP_MORALIS_ID,
+        serverUrl: process.env.REACT_APP_MORALIS_SERVER
+      });
+    }
 
     const timer = ms => new Promise(res => setTimeout(res, ms));
-
-    async function getNftOwners() {
-      let collectionAddr;
-      let ids;
-      if (symb === "TPCP") {
-        collectionAddr = addresses.puppies;
-        ids = puppiesTokens;
-      } else if (symb === "TMG") {
-        collectionAddr = addresses.moegirls;
-        ids = moegirlsTokens;
-      }
-      const options = { 
-        address: collectionAddr, 
-        token_id: "", 
-        chain: NETWORK };
-      
-      for (let i = 0; i < ids.length; i++) {
-          options.token_id = ids[i];
-          const tokenIdOwners = await Moralis.Web3API.token.getTokenIdOwners(options);
-          await timer(335);
-          const ownersNumber = tokenIdOwners.result.length;
-          if (ownersNumber > 0) {
-            if (ownersNumber === 1) {
-              setOwners(owners => [...owners, tokenIdOwners.result[0].owner_of]);
-            } else {
-              setOwners(owners => [...owners, tokenIdOwners.result.map(a => a.owner_of)]);
-            }
-          } else {
-            setOwners(owners => [...owners, ""]);
-          }
-      }
-    }
-  
-    function determineNonRepeteatedOwners(owners) {
-      let temp = [];
-      owners.forEach(nftOwners => {
-        if (nftOwners instanceof Array) {
-          nftOwners.forEach(owner => {
-            temp.push(owner);
-          });
-        } else {
-          temp.push(nftOwners);
-        }
-      });
-      setNonRepeteatedOwners([...new Set(temp)]);
-    }
 
     useEffect(() => {
 
@@ -129,7 +89,7 @@ function NFTVisualizer({ account, collection }) {
                 metadata = await getMetadataFromIpfs(tokenURI);
                 let image_url = metadata.image_url;
                 metadata.image_url = "https://" + (image_url).replace("ipfs://", "ipfs.io/ipfs/");
-                await timer(100);
+                await timer(25);
               } else { // Metadata stored by OpenSea
                 /*var url = "https://reqbin.com/ehttps://api.opensea.io/api/v1/asset/" + 
                           "0x2953399124F0cBB46d2CbACD8A89cF0599974963" + "/" + 
@@ -178,22 +138,71 @@ function NFTVisualizer({ account, collection }) {
       }
 
       if (displayConnectMessage === "flex" && mounted1) {
+        if (symb === "TPCP") {
+          setMessage1("puppies");
+          setMessage2("animated puppies");
+        } else if (symb === "TMG") {
+          setMessage1("girls");
+          setMessage2("pixel art girls");
+        }
+
         setMounted1(false);
         getNfts(account);
+
         if (window.ethereum) {
-          window.ethereum.on("accountsChanged", (accounts) => {
-            setDisplayConnectMessage("flex");
-            setMounted1(true);
+          window.ethereum.on("accountsChanged", () => {
+              setDisplayConnectMessage("flex");
+              setMounted1(true);
           });
         }
       }
 
-      if (symb === "TPCP") {
-        setMessage1("puppies");
-        setMessage2("animated puppies");
-      } else if (symb === "TMG") {
-        setMessage1("girls");
-        setMessage2("pixel art girls");
+      async function getNftOwners() {
+        let collectionAddr;
+        let ids;
+        if (symb === "TPCP") {
+          collectionAddr = addresses.puppies;
+          ids = puppiesTokens;
+        } else if (symb === "TMG") {
+          collectionAddr = addresses.moegirls;
+          ids = moegirlsTokens;
+        }
+        const options = { 
+          address: collectionAddr, 
+          token_id: "", 
+          chain: NETWORK };
+        
+        for (let i = 0; i < ids.length; i++) {
+            options.token_id = ids[i];
+            const tokenIdOwners = await Moralis.Web3API.token.getTokenIdOwners(options);
+            const ownersNumber = tokenIdOwners.result.length;
+            if (ownersNumber > 0) {
+              if (ownersNumber === 1) {
+                console.log("Iteration " + i);
+                setOwners(owners => [...owners, tokenIdOwners.result[0].owner_of]);
+              } else {
+                setOwners(owners => [...owners, tokenIdOwners.result.map(a => a.owner_of)]);
+              }
+            } else {
+              setOwners(owners => [...owners, ""]);
+            }
+            await timer(900);
+        }
+      }
+    
+      function determineNonRepeatedOwners(owners) {
+        let temp = [];
+        owners.forEach(nftOwners => {
+          if (nftOwners instanceof Array) {
+            nftOwners.forEach(owner => {
+              temp.push(owner);
+            });
+          } else {
+            temp.push(nftOwners);
+          }
+        });
+        setNonRepeteatedOwners([...new Set(temp)]);
+        console.log(nonRepeteatedOwners.length);
       }
              
       if (owners.length === 0 && mounted2) {
@@ -201,7 +210,7 @@ function NFTVisualizer({ account, collection }) {
         getNftOwners();
       }
 
-      determineNonRepeteatedOwners(owners);
+      determineNonRepeatedOwners(owners);
 
     }, [account, symb, displayConnectMessage, mounted1, mounted2, owners, Moralis.Web3API.token]);
 
@@ -231,9 +240,8 @@ function NFTVisualizer({ account, collection }) {
                                 <p style={{"textAlign":"center"}}>
                                     Connect your wallet to see the {message1}!
                                     <br />
-                                    If you already have, wait a few seconds till we retrieve the data from the blockchain.
                                     <br />
-                                    Depending on the blockchain congestion, this may sometimes take up to a few minutes.
+                                    If you already have, wait a few seconds till we retrieve the data from the blockchain.
                                 </p>
                             </Flash>
                         </Connect>
@@ -254,7 +262,7 @@ function NFTVisualizer({ account, collection }) {
                         nonRepeteatedOwners.map((nftOwners, j) =>
                             <Carousel.Item interval={1000} key={j}>
                                 <InsideCarrousel style={{"marginBottom":"2.5rem"}}>
-                                    {nftOwners.substring(0, 2)} <br/> {nftOwners.substring(3)} <br/>
+                                    {nftOwners.substring(0, 2)} <br/> {nftOwners.substring(2)} <br/>
                                 </InsideCarrousel>
                             </Carousel.Item>
                         )

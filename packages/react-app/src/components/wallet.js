@@ -50,7 +50,7 @@ function GreenLargeWallet({account}) {
     );
 }
   
-function WalletButton({ provider, loadWeb3Modal, account, setAccount, logoutOfWeb3Modal }) {
+function WalletButton({ provider, setProvider, loadWeb3Modal, account, setAccount, logoutOfWeb3Modal }) {
     const [rendered, setRendered] = useState("");
   
     useEffect(() => {  
@@ -62,6 +62,9 @@ function WalletButton({ provider, loadWeb3Modal, account, setAccount, logoutOfWe
 
                 // Load the user's accounts.
                 const accounts = await provider.listAccounts();
+                if (typeof(accounts) == "undefined") {
+                  return;
+                }
                 setAccount(accounts[0]);
 
                 // Resolve the ENS name for the first account (only if Ethereum).
@@ -84,10 +87,11 @@ function WalletButton({ provider, loadWeb3Modal, account, setAccount, logoutOfWe
                 console.error(err);
             }
         }
-        fetchAccount();
-    }, [account, provider, setAccount, setRendered]);
 
-    if (window.ethereum) {
+        fetchAccount();
+    }, [account, provider, setAccount]);
+
+    if (typeof(window.ethereum) !== 'undefined') {
       window.ethereum.on("accountsChanged", (accounts) => {
           if (account !== "") {
             if (typeof(accounts[0]) !== "undefined") {
@@ -97,6 +101,10 @@ function WalletButton({ provider, loadWeb3Modal, account, setAccount, logoutOfWe
                 console.log("Disconnected");
                 setRendered("");
             }
+          } else {
+            console.log("Disconnected");
+            setProvider(false);
+            setAccount("");
           }
       });
     }
@@ -104,7 +112,7 @@ function WalletButton({ provider, loadWeb3Modal, account, setAccount, logoutOfWe
     return (
         <Button
           onClick={() => {
-            if (!provider) {
+            if (typeof(provider) === "undefined") {
               loadWeb3Modal();
             } else {
               logoutOfWeb3Modal();

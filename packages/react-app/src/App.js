@@ -33,7 +33,7 @@ function App() {
       setMenuButColor("#6c718c");
     }
 
-    const [provider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal();
+    const [provider, setProvider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal();
 
     const [menuButColor, setMenuButColor] = useState("#6c718c");
     const [socialBut1Color, setSocialBut1Color] = useState("#e8f8f8");
@@ -100,8 +100,8 @@ function App() {
               <Toggle style={menuButStyle} handleNavToggle={handleNavToggle} 
               handleButColorEnter={handleButColorEnter} handleButColorLeave={handleButColorLeave} />
               <TopLeft>
-                <WalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} account={account} 
-                setAccount={setAccount} logoutOfWeb3Modal={logoutOfWeb3Modal} />
+                <WalletButton provider={provider} setProvider={setProvider} loadWeb3Modal={loadWeb3Modal} 
+                account={account} setAccount={setAccount} logoutOfWeb3Modal={logoutOfWeb3Modal} />
                 <Inventory account={account} />
               </TopLeft>
             </Header>

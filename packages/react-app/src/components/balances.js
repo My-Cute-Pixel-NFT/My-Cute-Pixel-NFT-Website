@@ -39,7 +39,10 @@ function Inventory({ account }) {
                 }
                 setTotalPups(totalPupsT);
                 setTotalMoe(totalMoeT);
-            } 
+            } else {
+                setTotalPups(0);
+                setTotalMoe(0);
+            }
         }
 
         getBalances(account);
