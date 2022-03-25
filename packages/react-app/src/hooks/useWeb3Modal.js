@@ -49,7 +49,7 @@ function useWeb3Modal(config = {}) {
     }
   }, [autoLoad, autoLoaded, loadWeb3Modal, setAutoLoaded, web3Modal.cachedProvider]);
 
-  return [provider, loadWeb3Modal, logoutOfWeb3Modal];
+  return [provider, setProvider, loadWeb3Modal, logoutOfWeb3Modal];
 }
 
 export default useWeb3Modal;

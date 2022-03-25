@@ -178,7 +178,6 @@ function NFTVisualizer({ account, collection }) {
             const ownersNumber = tokenIdOwners.result.length;
             if (ownersNumber > 0) {
               if (ownersNumber === 1) {
-                console.log("Iteration " + i);
                 setOwners(owners => [...owners, tokenIdOwners.result[0].owner_of]);
               } else {
                 setOwners(owners => [...owners, tokenIdOwners.result.map(a => a.owner_of)]);
@@ -202,7 +201,6 @@ function NFTVisualizer({ account, collection }) {
           }
         });
         setNonRepeteatedOwners([...new Set(temp)]);
-        console.log(nonRepeteatedOwners.length);
       }
              
       if (owners.length === 0 && mounted2) {
