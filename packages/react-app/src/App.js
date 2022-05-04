@@ -27,6 +27,7 @@ const MORALIS_ID = process.env.REACT_APP_MORALIS_ID;
 function App() {
     const [navToggled, setNavToggled] = useState(false);
     const [account, setAccount] = useState("");
+    const [refreshInventory, setRefreshInventory] = useState(false);
 
     const handleNavToggle = () => {
       setNavToggled(!navToggled);
@@ -102,7 +103,7 @@ function App() {
               <TopLeft>
                 <WalletButton provider={provider} setProvider={setProvider} loadWeb3Modal={loadWeb3Modal} 
                 account={account} setAccount={setAccount} logoutOfWeb3Modal={logoutOfWeb3Modal} />
-                <Inventory account={account} />
+                <Inventory account={account} refresh={refreshInventory}/>
               </TopLeft>
             </Header>
             <Body>
@@ -115,34 +116,34 @@ function App() {
                   <Route exact path="/" element={<Home />} />
                   <Route exact path="/PixelCryptoPuppies" element={<PixelCryptoPuppies account={account} />} />
                   <Route exact path="/TheMoeGirls" element={<TheMoeGirls account={account} />} />
-                  <Route exact path="/Lunians" element={<Lunians />} />
+                  <Route exact path="/Lunians" element={<Lunians account={account} refreshInventory={refreshInventory} setRefreshInventory={setRefreshInventory}/>} />
                   <Route exact path="/Commissions" element={<Commissions />} />
                 </Routes>
               </Router>
             </Body>
             <Footer>
-                <Slide left>
+                <Slide left delay={250}>
                   <a href="https://twitter.com/mycutepixel_nft" target="_blank" rel="noreferrer"
                   style={socialBut1Style} onMouseEnter={handleSoc1ColorEnter} 
                   onMouseLeave={handleSoc1ColorLeave}>
                     <RiTwitterLine />
                   </a>
                 </Slide>
-                <Slide bottom>
+                <Slide bottom delay={250}>
                   <a href="https://www.instagram.com/my.cute.pixel.nft" target="_blank" rel="noreferrer"
                   style={socialBut4Style} onMouseEnter={handleSoc4ColorEnter} 
                   onMouseLeave={handleSoc4ColorLeave}>
                     <RiInstagramLine />
                   </a>
                 </Slide>
-                <Slide bottom>
+                <Slide bottom delay={250}>
                   <a href="https://mycutepixel-nft.medium.com" target="_blank" rel="noreferrer"
                   style={socialBut2Style} onMouseEnter={handleSoc2ColorEnter} 
                   onMouseLeave={handleSoc2ColorLeave}>
                     <RiMediumLine />
                   </a>
                 </Slide>
-                <Slide right>
+                <Slide right delay={250}>
                   <a href="https://github.com/My-Cute-Pixel-NFT"
                   style={socialBut3Style} onMouseEnter={handleSoc3ColorEnter} 
                   onMouseLeave={handleSoc3ColorLeave}>

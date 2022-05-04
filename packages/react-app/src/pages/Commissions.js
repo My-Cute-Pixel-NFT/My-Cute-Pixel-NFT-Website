@@ -1,4 +1,6 @@
 import React from 'react';
+import Fade from 'react-reveal/Fade';
+import Zoom from 'react-reveal/Zoom';
 import styled from 'styled-components';
 
 import { Image } from "./../components/index";
@@ -27,9 +29,13 @@ const Commissions = () => {
                     format you prefer and contact us in Twitter!
                 </Paragraph>
                 <BannerTier1>
-                    <TierHeading>Tier 1</TierHeading>
+                    <Zoom>
+                        <TierHeading>Tier 1</TierHeading>
+                    </Zoom>
                     <TierInfo>
-                        <Image src={tier1} alt="react-logo" style={{"alignSelf":"center", "height":"200px"}} />
+                        <Fade left>
+                            <Image src={tier1} alt="react-logo" style={{"alignSelf":"center", "height":"200px"}} />
+                        </Fade>
                         <Paragraph style={{"alignSelf":"center", "marginRight":"10px", "marginLeft":"10px", "color":"gray"}}>
                             <b>Canvas size:</b> 32px x 32px
                             <br></br>
@@ -40,68 +46,98 @@ const Commissions = () => {
                     </TierInfo>
                 </BannerTier1>
                 <BannerTier2>
-                    <TierHeading>Tier 2</TierHeading>
+                    <Zoom>
+                        <TierHeading>Tier 2</TierHeading>
+                    </Zoom>
                     <TierInfo>
-                        <Image src={tier2} alt="react-logo" style={{"alignSelf":"center", "height":"200px"}} />
-                        <Paragraph style={{"alignSelf":"center", "marginRight":"10px", "marginLeft":"10px", "color":"gray"}}>
-                            <b>Canvas size:</b> 45px x 45px
-                            <br></br>
-                            <b>Price:</b> 0.015 Eth
-                            <br></br>
-                            <b>Note:</b> Looking for icons and emojis? We got it!
-                        </Paragraph>
+                        <Fade left>
+                            <Image src={tier2} alt="react-logo" style={{"alignSelf":"center", "height":"200px"}} />
+                        </Fade>
+                        <Fade right>
+                            <Paragraph style={{"alignSelf":"center", "marginRight":"10px", "marginLeft":"10px", "color":"gray"}}>
+                                <b>Canvas size:</b> 45px x 45px
+                                <br></br>
+                                <b>Price:</b> 0.015 Eth
+                                <br></br>
+                                <b>Note:</b> Looking for icons and emojis? We got it!
+                            </Paragraph>
+                        </Fade>
                     </TierInfo>
                 </BannerTier2>
                 <BannerTier3>
-                    <TierHeading>Tier 3</TierHeading>
+                    <Zoom>
+                        <TierHeading>Tier 3</TierHeading>
+                    </Zoom>
                     <TierInfo>
-                        <Image src={tier3} alt="react-logo" style={{"alignSelf":"center", "height":"200px"}} />
-                        <Paragraph style={{"alignSelf":"center", "marginRight":"10px", "marginLeft":"10px", "color":"gray"}}>
-                            <b>Canvas size:</b> 64px x 64px
-                            <br></br>
-                            <b>Price:</b> 0.02 Eth
-                            <br></br>
-                            <b>Note:</b> Half-body designs with some nice details.
-                        </Paragraph>
+                        <Fade left>
+                            <Image src={tier3} alt="react-logo" style={{"alignSelf":"center", "height":"200px"}} />
+                        </Fade>
+                        <Fade right>
+                            <Paragraph style={{"alignSelf":"center", "marginRight":"10px", "marginLeft":"10px", "color":"gray"}}>
+                                <b>Canvas size:</b> 64px x 64px
+                                <br></br>
+                                <b>Price:</b> 0.02 Eth
+                                <br></br>
+                                <b>Note:</b> Half-body designs with some nice details.
+                            </Paragraph>
+                        </Fade>
                     </TierInfo>
                 </BannerTier3>
                 <BannerTier4>
-                    <TierHeading>Tier 4</TierHeading>
+                    <Zoom>
+                        <TierHeading>Tier 4</TierHeading>
+                    </Zoom>
                     <TierInfo>
-                        <Image src={tier4} alt="react-logo" style={{"alignSelf":"center", "height":"200px"}} />
-                        <Paragraph style={{"alignSelf":"center", "marginRight":"10px", "marginLeft":"10px", "color":"gray"}}>
-                            <b>Canvas size:</b> 64px x 64px
-                            <br></br>
-                            <b>Price:</b> 0.03 Eth
-                            <br></br>
-                            <b>Note:</b> Full-body designs with some nice details.
-                        </Paragraph>
+                        <Fade left>
+                            <Image src={tier4} alt="react-logo" style={{"alignSelf":"center", "height":"200px"}} />
+                        </Fade>
+                        <Fade right>
+                            <Paragraph style={{"alignSelf":"center", "marginRight":"10px", "marginLeft":"10px", "color":"gray"}}>
+                                <b>Canvas size:</b> 64px x 64px
+                                <br></br>
+                                <b>Price:</b> 0.03 Eth
+                                <br></br>
+                                <b>Note:</b> Full-body designs with some nice details.
+                            </Paragraph>
+                        </Fade>
                     </TierInfo>
                 </BannerTier4>
                 <BannerTier5>
-                    <TierHeading>Tier 5</TierHeading>
+                    <Zoom>
+                        <TierHeading>Tier 5</TierHeading>
+                    </Zoom>
                     <TierInfo>
-                        <Image src={tier5} alt="react-logo" style={{"alignSelf":"center", "height":"200px"}} />
-                        <Paragraph style={{"alignSelf":"center", "marginRight":"10px", "marginLeft":"10px", "color":"gray"}}>
-                            <b>Canvas size:</b> 96px x 96px
-                            <br></br>
-                            <b>Price:</b> 0.04 Eth
-                            <br></br>
-                            <b>Note:</b> This tier is perfect for profile pictures.
-                        </Paragraph>
+                        <Fade left>
+                            <Image src={tier5} alt="react-logo" style={{"alignSelf":"center", "height":"200px"}} />
+                        </Fade>
+                        <Fade right>
+                            <Paragraph style={{"alignSelf":"center", "marginRight":"10px", "marginLeft":"10px", "color":"gray"}}>
+                                <b>Canvas size:</b> 96px x 96px
+                                <br></br>
+                                <b>Price:</b> 0.04 Eth
+                                <br></br>
+                                <b>Note:</b> This tier is perfect for profile pictures.
+                            </Paragraph>
+                        </Fade>
                     </TierInfo>
                 </BannerTier5>
                 <BannerTier6>
-                    <TierHeading>Tier 6</TierHeading>
+                    <Zoom>
+                        <TierHeading>Tier 6</TierHeading>
+                    </Zoom>
                     <TierInfo>
-                        <Image src={tier6} alt="react-logo" style={{"alignSelf":"center", "height":"200px"}} />
-                        <Paragraph style={{"alignSelf":"center", "marginRight":"10px", "marginLeft":"10px", "color":"gray"}}>
-                            <b>Canvas size:</b> 180px x 180px
-                            <br></br>
-                            <b>Price:</b> 0.06 Eth
-                            <br></br>
-                            <b>Note:</b> Our top-tier and most elaborated drawings.
-                        </Paragraph>
+                        <Fade left>
+                            <Image src={tier6} alt="react-logo" style={{"alignSelf":"center", "height":"200px"}} />
+                        </Fade>
+                        <Fade right>
+                            <Paragraph style={{"alignSelf":"center", "marginRight":"10px", "marginLeft":"10px", "color":"gray"}}>
+                                <b>Canvas size:</b> 180px x 180px
+                                <br></br>
+                                <b>Price:</b> 0.06 Eth
+                                <br></br>
+                                <b>Note:</b> Our top-tier and most elaborated drawings.
+                            </Paragraph>
+                        </Fade>
                     </TierInfo>
                 </BannerTier6>
             </Content>

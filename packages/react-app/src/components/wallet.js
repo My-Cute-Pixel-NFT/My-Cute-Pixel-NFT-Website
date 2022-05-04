@@ -57,7 +57,7 @@ function WalletButton({ provider, setProvider, loadWeb3Modal, account, setAccoun
         async function fetchAccount() {
             try {
                 if (!provider) {
-                    return;
+                  return;
                 }
 
                 // Load the user's accounts.
@@ -92,21 +92,22 @@ function WalletButton({ provider, setProvider, loadWeb3Modal, account, setAccoun
     }, [account, provider, setAccount]);
 
     if (typeof(window.ethereum) !== 'undefined') {
-      window.ethereum.on("accountsChanged", (accounts) => {
-          if (account !== "") {
-            if (typeof(accounts[0]) !== "undefined") {
-                console.log("Selected account: " + accounts[0]);
-                setAccount(accounts[0]);
+        window.ethereum.on("accountsChanged", (accounts) => {
+            if (account !== "") {
+                if (typeof(accounts[0]) !== "undefined") {
+                    console.log("Selected account: " + accounts[0]);
+                    setAccount(accounts[0]);
+                    setRendered(<GreenLargeWallet account={accounts[0]}/>)
+                } else {
+                    console.log("Disconnected");
+                    setRendered("");
+                }
             } else {
-                console.log("Disconnected");
-                setRendered("");
+              console.log("Disconnected");
+              setProvider(false);
+              setAccount("");
             }
-          } else {
-            console.log("Disconnected");
-            setProvider(false);
-            setAccount("");
-          }
-      });
+        });
     }
   
     return (

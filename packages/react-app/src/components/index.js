@@ -132,7 +132,7 @@ export const InventoryMenu = styled.div`
     margin: 8px 0 0 5px;
     @media screen and (max-width: 1025px) {
       font-size: 13px;
-      height: 75px;
+      height: 105px;
     }
     @media screen and (max-width: 845px) {
       height: 50px;

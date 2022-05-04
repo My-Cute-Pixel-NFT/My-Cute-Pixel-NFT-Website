@@ -28,6 +28,10 @@ const StyledToggle = styled.button`
     cursor: pointer;
     z-index: 98;
     height:60px;
+
+    @media(max-width: 350px) {
+        top: 4rem;
+    }
 `;
 
 export default Toggle;

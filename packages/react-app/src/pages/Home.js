@@ -104,7 +104,7 @@ const Home = () => {
                                         </Fade>
                                     </DivImage>
                                     <Fade right>
-                                        <Paragraph>Known as Nanae. She is joyful, dramatic and very passionate in everything she does, so, 
+                                        <Paragraph>Known as Nanae. She is joyful, optimistic and very passionate in everything she does, so, 
                                         of course, she is the heart of the team. She loves eating sweet things, especially pancakes, which she devours as there was 
                                         no tomorrow. She always felt a great passion for anime, video games, and cute things and beings, like her dog and her cat. 
                                         She has specialized now in the adorable style of pixel art.</Paragraph>

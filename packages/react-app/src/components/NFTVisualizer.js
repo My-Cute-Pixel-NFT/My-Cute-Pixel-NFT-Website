@@ -38,13 +38,11 @@ function NFTVisualizer({ account, collection }) {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [nfts, setNfts] = useState(initialNfts);
     const [displayConnectMessage, setDisplayConnectMessage] = useState("flex");
-    const [symb] = useState(collection);
     const [message1, setMessage1] = useState("");
     const [message2, setMessage2] = useState("");
     const [owners, setOwners] = useState([]);
     const [nonRepeteatedOwners, setNonRepeteatedOwners] = useState([]);
-    const [mounted1, setMounted1] = useState(true);
-    const [mounted2, setMounted2] = useState(true);
+    const [mounted, setMounted] = useState(true);
 
     const { Moralis, isInitialized } = useMoralis();
     if (!isInitialized) {
@@ -56,27 +54,28 @@ function NFTVisualizer({ account, collection }) {
 
     const timer = ms => new Promise(res => setTimeout(res, ms));
 
+    // Contract and tokens
+    const provider = new InfuraProvider(NETWORK, INFURA_ID);
+    let nftCollection;
+    let ids;
+    /*const seaport  = new OpenSeaPort(provider, {
+      networkName: Network.Main//,
+      //apiKey: YOUR_API_KEY
+    });*/
+    if (collection === "TPCP") {
+      nftCollection = new Contract(addresses.puppies, abis.erc1155, provider);
+      ids = puppiesTokens;
+    } else if (collection === "TMG") {
+      nftCollection = new Contract(addresses.moegirls, abis.erc1155, provider);
+      ids = moegirlsTokens;
+    }
+    let numberOfNfts = ids.length;
+
     useEffect(() => {
 
       async function getNfts({ account }) {
         if (account !== "") {
-            const provider = new InfuraProvider(NETWORK, INFURA_ID);
-            let nftCollection;
-            let ids;
-            /*const seaport  = new OpenSeaPort(provider, {
-              networkName: Network.Main//,
-              //apiKey: YOUR_API_KEY
-            });*/
-            if (symb === "TPCP") {
-              nftCollection = new Contract(addresses.puppies, abis.erc1155, provider);
-              ids = puppiesTokens;
-            } else if (symb === "TMG") {
-              nftCollection = new Contract(addresses.moegirls, abis.erc1155, provider);
-              ids = moegirlsTokens;
-            }
-            let numberOfNfts = ids.length;
             let accounts = Array(numberOfNfts).fill(account);
-            
             let copies = await nftCollection.balanceOfBatch(accounts, ids);
         
             let tempArray = [];
@@ -129,7 +128,7 @@ function NFTVisualizer({ account, collection }) {
                 ];
               }
               metadata.copies = copies[i];
-              metadata.symbol = symb;
+              metadata.symbol = collection;
               tempArray.push(metadata);
             }
             setNfts(tempArray);
@@ -137,33 +136,29 @@ function NFTVisualizer({ account, collection }) {
         }
       }
 
-      if (displayConnectMessage === "flex" && mounted1) {
-        if (symb === "TPCP") {
+      if (displayConnectMessage === "flex") {
+        if (collection === "TPCP") {
           setMessage1("puppies");
           setMessage2("animated puppies");
-        } else if (symb === "TMG") {
+        } else if (collection === "TMG") {
           setMessage1("girls");
           setMessage2("pixel art girls");
         }
 
-        setMounted1(false);
         getNfts(account);
-
-        if (window.ethereum) {
-          window.ethereum.on("accountsChanged", () => {
-              setDisplayConnectMessage("flex");
-              setMounted1(true);
-          });
-        }
       }
+
+    }, [account, collection, ids, nftCollection, numberOfNfts, displayConnectMessage]);
+
+    useEffect(() => {
 
       async function getNftOwners() {
         let collectionAddr;
         let ids;
-        if (symb === "TPCP") {
+        if (collection === "TPCP") {
           collectionAddr = addresses.puppies;
           ids = puppiesTokens;
-        } else if (symb === "TMG") {
+        } else if (collection === "TMG") {
           collectionAddr = addresses.moegirls;
           ids = moegirlsTokens;
         }
@@ -203,14 +198,14 @@ function NFTVisualizer({ account, collection }) {
         setNonRepeteatedOwners([...new Set(temp)]);
       }
              
-      if (owners.length === 0 && mounted2) {
-        setMounted2(false);
+      if (owners.length === 0 && mounted) {
+        setMounted(false);
         getNftOwners();
       }
 
       determineNonRepeatedOwners(owners);
 
-    }, [account, symb, displayConnectMessage, mounted1, mounted2, owners, Moralis.Web3API.token]);
+    }, [collection, ids, mounted, owners, Moralis.Web3API.token]);
 
     async function getMetadataFromIpfs(tokenURI) {
         let metadata = await axios.get(tokenURI);
@@ -239,7 +234,7 @@ function NFTVisualizer({ account, collection }) {
                                     Connect your wallet to see the {message1}!
                                     <br />
                                     <br />
-                                    If you already have, wait a few seconds till we retrieve the data from the blockchain.
+                                    If you already have, wait a few seconds till we retrieve the data.
                                 </p>
                             </Flash>
                         </Connect>
