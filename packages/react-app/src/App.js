@@ -18,6 +18,8 @@ import TheMoeGirls from "./pages/TheMoeGirls";
 import Lunians from "./pages/Lunians";
 import Commissions from "./pages/Commissions";
 
+import spaceBack from "./img/WholeSpaceBackground.png";
+
 require('dotenv').config();
 
 // Moralis
@@ -96,7 +98,7 @@ function App() {
 
     return (
       <MoralisProvider appId={MORALIS_ID} serverUrl={MORALIS_SERVER}>
-          <div>
+          <div style={styleBackground}>
             <Header>
               <Toggle style={menuButStyle} handleNavToggle={handleNavToggle} 
               handleButColorEnter={handleButColorEnter} handleButColorLeave={handleButColorLeave} />
@@ -154,6 +156,13 @@ function App() {
           </div>
       </MoralisProvider>
     );
+}
+
+const styleBackground = {
+  "backgroundImage":"url("+spaceBack+")", 
+  "backgroundSize":"cover",
+  "backgroundPosition":"center",
+  "backgroundRepeat":"no-repeat"
 }
 
 export default App;

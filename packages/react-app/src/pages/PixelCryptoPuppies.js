@@ -125,7 +125,7 @@ const PixelCryptoPuppies = (account) => {
                     </p>
                 </PokkoRoadmap>
                 <Image src={roadmap} alt="pixel-crypto-puppies-roadmap" 
-                       style={{"alignSelf":"center", "marginTop":"1rem", "width":"50%", "height":"auto", "minWidth":"355px", "maxWidth":"700px"}} />
+                       style={RoadmapImgStyle} />
                 <DivTextImage>
                     <Link href="https://opensea.io/collection/the-pixel-crypto-puppies" style={{"display":"flex", "flexDirection":"column"}}>
                         <Fade right duration={3000}>
@@ -146,6 +146,18 @@ const PixelCryptoPuppies = (account) => {
             </Content>
         </StyledCollection>
     )
+}
+
+const RoadmapImgStyle = {
+    "alignSelf":"center", 
+    "marginTop":"1rem", 
+    "width":"50%", 
+    "height":"auto", 
+    "minWidth":"355px", 
+    "maxWidth":"700px",
+    "boxShadow":"20px 38px 34px -26px hsla(0,0%,0%,.2)",
+    "borderRadius":"255px 15px 225px 15px/15px 225px 15px 255px",
+    "border":"solid 7px rgb(179,227,227)",
 }
 
 export default PixelCryptoPuppies;

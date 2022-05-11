@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
-import header from "./../img/TitleGif.gif";
+import header from "./../img/TitleGifBlanco.gif";
 
 export const Header = styled.header`
   font-family: 'Minecraftia', sans-serif;
   background-image: url(${header});
   background-repeat: no-repeat;
   background-position: center bottom;
-  background-color: #3f396b;
   background-size: contain;
   min-height: 180px;
   display: flex;
@@ -23,7 +22,6 @@ export const Header = styled.header`
 export const Body = styled.div`
   font-family: 'Minecraftia', sans-serif;
   align-items: center;
-  background-color: #3f396b;
   color: white;
   display: flex;
   flex-direction: column;
@@ -35,7 +33,6 @@ export const Body = styled.div`
 export const Footer = styled.footer`
   font-family: 'Minecraftia', sans-serif;
   align-items: center;
-  background-color: #3f396b;
   color: white;
   display: flex;
   flex-direction: row;

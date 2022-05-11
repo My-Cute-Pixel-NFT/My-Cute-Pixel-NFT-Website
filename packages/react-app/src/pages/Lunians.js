@@ -9,6 +9,7 @@ import Fade from 'react-reveal/Fade';
 import Zoom from 'react-reveal/Zoom';
 import Select from 'react-select';
 import SpinStretch from "react-cssfx-loading/lib/SpinStretch";
+import { FaCheck } from "react-icons/fa";
 
 import { Contract } from "@ethersproject/contracts";
 import { InfuraProvider, Web3Provider } from "@ethersproject/providers";
@@ -20,6 +21,7 @@ import MediumCard from "./../components/flipCard";
 import { StyledCollection, Heading, Content, Paragraph } from 
 "./../components/collectionPagesComponents";
 
+import luniansLogo from "./../img/LuniansLogo.png";
 import banner from "./../img/SpaceBackground200.png";
 import lunia from "./../img/Lunia.gif";
 import poofpoof from "./../img/Poof-Poof.gif";
@@ -72,7 +74,7 @@ const stampLunian1 = {
     "padding":"2px 8px",
     "boxShadow":"20px 38px 34px -26px hsla(0,0%,0%,.2)",
     "borderRadius":"255px 15px 225px 15px/15px 225px 15px 255px",
-    "border":"solid 7px rgb(143, 72, 184)"
+    "border":"solid 5px rgb(143, 72, 184)"
 };
 
 const stampLunian1Vert = {
@@ -84,7 +86,7 @@ const stampLunian1Vert = {
     "padding":"2px 8px",
     "boxShadow":"20px 38px 34px -26px hsla(0,0%,0%,.2)",
     "borderRadius":"255px 15px 225px 15px/15px 225px 15px 255px",
-    "border":"solid 7px rgb(143, 72, 184)",
+    "border":"solid 5px rgb(143, 72, 184)",
     "fontSize":"small"
 };
 
@@ -97,7 +99,7 @@ const stampLunian2 = {
     "padding":"2px 8px",
     "boxShadow":"20px 38px 34px -26px hsla(0,0%,0%,.2)",
     "borderRadius":"255px 15px 225px 15px/15px 225px 15px 255px",
-    "border":"solid 7px rgb(143, 72, 184)"
+    "border":"solid 5px rgb(143, 72, 184)"
 };
 
 const stampLunian2Vert = {
@@ -109,7 +111,7 @@ const stampLunian2Vert = {
     "padding":"2px 8px",
     "boxShadow":"20px 38px 34px -26px hsla(0,0%,0%,.2)",
     "borderRadius":"255px 15px 225px 15px/15px 225px 15px 255px",
-    "border":"solid 7px rgb(143, 72, 184)",
+    "border":"solid 5px rgb(143, 72, 184)",
     "fontSize":"small"
 };
 
@@ -122,7 +124,7 @@ const stampNebula1 = {
     "padding":"2px 8px",
     "boxShadow":"20px 38px 34px -26px hsla(0,0%,0%,.2)",
     "borderRadius":"255px 15px 225px 15px/15px 225px 15px 255px",
-    "border":"solid 7px rgb(143, 72, 184)"
+    "border":"solid 5px rgb(143, 72, 184)"
 };
 
 const stampNebula1Vert = {
@@ -134,7 +136,7 @@ const stampNebula1Vert = {
     "padding":"2px 8px",
     "boxShadow":"20px 38px 34px -26px hsla(0,0%,0%,.2)",
     "borderRadius":"255px 15px 225px 15px/15px 225px 15px 255px",
-    "border":"solid 7px rgb(143, 72, 184)",
+    "border":"solid 5px rgb(143, 72, 184)",
     "fontSize":"small"
 };
 
@@ -147,7 +149,7 @@ const stampNebula2 = {
     "padding":"2px 8px",
     "boxShadow":"20px 38px 34px -26px hsla(0,0%,0%,.2)",
     "borderRadius":"255px 15px 225px 15px/15px 225px 15px 255px",
-    "border":"solid 7px rgb(143, 72, 184)"
+    "border":"solid 5px rgb(143, 72, 184)"
 };
 
 const stampNebula2Vert = {
@@ -159,7 +161,7 @@ const stampNebula2Vert = {
     "padding":"2px 8px",
     "boxShadow":"20px 38px 34px -26px hsla(0,0%,0%,.2)",
     "borderRadius":"255px 15px 225px 15px/15px 225px 15px 255px",
-    "border":"solid 7px rgb(143, 72, 184)",
+    "border":"solid 5px rgb(143, 72, 184)",
     "fontSize":"small"
 };
 
@@ -391,7 +393,13 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
 
     return (
         <StyledCollection>
-            <Heading>Lunians</Heading>
+            <div style={{"display":"flex", "flexDirection":"row", "justifyContent":"space-evenly"}}>
+                <Image src={luniansLogo} alt="lunians-logo" style={{"height":"20vmin", "margin":"0",
+                    "alignSelf":"flex-end", "transform":"rotate(-12deg)"}} />
+                <Heading>Lunians</Heading>
+                <Image src={luniansLogo} alt="lunians-logo" style={{"height":"20vmin", "margin":"0",
+                    "alignSelf":"flex-end", "transform":"rotate(12deg)"}} />
+            </div>
             <Content>
                 <SpaceBackground data-tip data-for="registerTipCredits" data-html="true">
                     <Image src={lunia} alt="lunia-planet" style={{"alignSelf":"center", 
@@ -417,15 +425,33 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                     </Top>
                     <Card>
                         <Fade bottom cascade>
-                            <p style={{"color":"rgba(133,255,243,0.61)"}}>Awesome pixel art</p>
-                            <p style={{"color":"rgba(133,255,243,0.64)"}}>Advanced smart contracts</p>
-                            <p style={{"color":"rgba(133,255,243,0.67)"}}>Doxxed team</p>
-                            <p style={{"color":"rgba(133,255,243,0.7)"}}>Innovative use of oracles</p>
-                            <p style={{"color":"rgba(133,255,243,0.73)"}}>Web3 website</p>
-                            <p style={{"color":"rgba(133,255,243,0.76)"}}>NFT random rarities</p>
-                            <p style={{"color":"rgba(133,255,243,0.79)"}}>Great roadmap</p>
-                            <p style={{"color":"rgba(133,255,243,0.82)"}}>Interesting lore</p>
-                            <p style={{"color":"rgba(133,255,243,0.85)", "fontWeight":"bold"}}>More to be unveiled</p>
+                            <HoloLetters style={{"color":"rgba(133,255,243,0.6)"}}>
+                                Awesome pixel art
+                            </HoloLetters>
+                            <HoloLetters style={{"color":"rgba(133,255,243,0.55)"}}>
+                                Advanced smart contracts
+                            </HoloLetters>
+                            <HoloLetters style={{"color":"rgba(133,255,243,0.6)"}}>
+                                Doxxed team
+                            </HoloLetters>
+                            <HoloLetters style={{"color":"rgba(133,255,243,0.65)"}}>
+                                Innovative use of oracles
+                            </HoloLetters>
+                            <HoloLetters style={{"color":"rgba(133,255,243,0.7)"}}>
+                                Web3 website
+                            </HoloLetters>
+                            <HoloLetters style={{"color":"rgba(133,255,243,0.75)"}}>
+                                NFT random rarities
+                            </HoloLetters>
+                            <HoloLetters style={{"color":"rgba(133,255,243,0.8)"}}>
+                                Great roadmap
+                            </HoloLetters>
+                            <HoloLetters style={{"color":"rgba(133,255,243,0.85)"}}>
+                                Interesting lore
+                            </HoloLetters>
+                            <HoloLetters style={{"color":"rgba(133,255,243,0.9)", "fontWeight":"bold"}}>
+                                More to be unveiled
+                            </HoloLetters>
                         </Fade>
                     </Card>
                     <Holo className="Holo" />
@@ -435,21 +461,50 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                     <Top>
                         OTHER ADVANTAGES
                     </Top>
-                    <Paragraph>
+                    <Paragraph style={{"textAlign":"center", "width":"100%"}}>
                         <Fade top cascade>
-                            <p>Hatched in Polygon - Barely no gas fees</p>
-                            <p>Holders own the image rights of their NFTs</p>
-                            <p>Decentralized hosting of metadata through IPFS</p>
-                            <p>Utility - Advantages, rewards and perks while holding an NFT</p>
-                            <p>Frozen metadata - Your NFTs' linked metadata will NEVER change</p>
+                            <div>
+                                <p>
+                                    <FaCheck style={{"margin":"0 2% 8px 2%", "color":"rgba(133,255,243,1)"}}/> 
+                                    Hatched in Polygon - Barely no gas fees
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <FaCheck style={{"margin":"0 2% 8px 2%", "color":"rgba(133,255,243,1)"}}/> 
+                                    Holders own the image rights of their NFTs
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <FaCheck style={{"margin":"0 2% 8px 2%", "color":"rgba(133,255,243,1)"}}/> 
+                                    Decentralized hosting of metadata through ipfs
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <FaCheck style={{"margin":"0 2% 8px 2%", "color":"rgba(133,255,243,1)"}}/> 
+                                    Utility - Advantages, rewards and perks while holding an NFT
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <FaCheck style={{"margin":"0 2% 8px 2%", "color":"rgba(133,255,243,1)"}}/> 
+                                    Frozen metadata - Your NFTs' linked metadata will NEVER change
+                                </p>
+                            </div>
                         </Fade>
                     </Paragraph>
                 </Reasons>
 
                 <Lore>
-                    <Top>
-                        DISCOVER MORE
-                    </Top>
+                    <div style={{"display":"flex", "justifyContent":"space-between", "width":"100%"}}>
+                        <div style={{"borderTop":"groove rgb(179, 227, 227)", "flex":"0 1 35%"}}/>
+                        <Top>
+                            DISCOVER MORE
+                        </Top>
+                        <div style={{"borderTop":"groove rgb(179, 227, 227)", "flex":"0 1 35%"}}/>
+                    </div>
                     <Grid>
                         <Flip left delay={250}>
                             <MediumCard frontImage={blackhole} frontTitle="Origins" backText={abstract1} link={link1} />
@@ -474,8 +529,8 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                         HATCH YOUR SEEDPODS
                     </Top>
                     <Paragraph>
-                        Hatch your seedpod here when planet Lunia has unveiled "all" its mysteries and get
-                        a fantastic and enigmatic creature with random rarities.
+                        Hatch your seedpods here when planet Lunia has unveiled "all" its mysteries, and 
+                        get a fantastic and enigmatic creature with random rarities.
                     </Paragraph>
                     <Zoom top>
                         <div>
@@ -612,10 +667,6 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
 export default Lunians;
 
 const SpaceBackground = styled.div`
-    background-image:url(${banner}); 
-    background-repeat: repeat; 
-    background-size: 100%;
-    background-position: center;
     width: 105.3%;
     margin: 0.5rem 0 0 -2.7%;
     display: flex;
@@ -691,11 +742,11 @@ const holographic = keyframes`
 `;
 
 const Card = styled.div`
-    margin-top:3rem;
+    margin-top: 3rem;
     position: relative;
     width: ${widthCard};
     max-width: 100%;
-    height: 500px;
+    height: 88%;
     background-size: contain;
     background-repeat: no-repeat;
     animation: ${float} 1s infinite alternate;
@@ -705,13 +756,19 @@ const Card = styled.div`
     }
 `;
 
+const HoloLetters = styled.p`
+    font-family: Holo-Jacket Title;
+    font-size: 150%;
+    margin: -1% 0;
+`;
+
 const Holo = styled.div`
     position: relative;
     z-index: 2;
     width: ${width};
     max-width: 80%;
     height: ${height};
-    margin: -5px auto 0;
+    margin: 0 auto 0;
     background-color: rgba(${holo_color}, .35);
     border-radius: 100%;
     filter: blur(2.5px);
@@ -719,10 +776,6 @@ const Holo = styled.div`
     transform-style: preserve-3d;
     animation: ${holographic} 1.5s infinite alternate;
     backface-visibility: hidden;
-
-    @media(max-width: 700px) {
-        margin-top: -3.2rem;
-      };
     
     &:after {
         position: absolute;
@@ -749,6 +802,7 @@ const Lore = styled.div`
     margin-bottom: 2rem;
     border-style: groove;
     border-color: rgb(179, 227, 227);
+    border-top: transparent;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -757,7 +811,6 @@ const Lore = styled.div`
 
 const Top = styled.div`
     margin-top: -1.3rem;
-    background: #3f396b;
     width: fit-content;
     padding: 0 0.8rem 0 0.8rem;
     font-family: Tiny BoxBitA10, sans-serif;

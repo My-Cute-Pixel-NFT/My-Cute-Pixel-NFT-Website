@@ -129,7 +129,7 @@ const TheMoeGirls = (account) => {
                     </p>
                 </PokkoRoadmap>
                 <Image src={roadmap} alt="moe-girls-roadmap" 
-                style={{"alignSelf":"center", "marginTop":"1rem", "width":"50%", "height":"auto", "minWidth":"355px", "maxWidth":"700px"}} />
+                style={RoadmapImgStyle} />
                 <Paragraph>We accept commissions for this collection! You'll find more than 32 Moe Girls in OpenSea
                            because of this and due to the special Christmas Editions that were given to early buyers.
                            If you want your own, custom Moe Girl, based on any character you like, contact us on Twitter.
@@ -154,6 +154,18 @@ const TheMoeGirls = (account) => {
             </Content>
         </StyledCollection>
     )
+}
+
+const RoadmapImgStyle = {
+    "alignSelf":"center", 
+    "marginTop":"1rem", 
+    "width":"50%", 
+    "height":"auto", 
+    "minWidth":"355px", 
+    "maxWidth":"700px",
+    "boxShadow":"20px 38px 34px -26px hsla(0,0%,0%,.2)",
+    "borderRadius":"255px 15px 225px 15px/15px 225px 15px 255px",
+    "border":"solid 7px rgb(179,227,227)",
 }
 
 export default TheMoeGirls
