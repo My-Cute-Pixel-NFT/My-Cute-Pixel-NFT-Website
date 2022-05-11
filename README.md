@@ -53,7 +53,7 @@ my-eth-app
             ├── img 
             ├── Pages
                 ├── Home.js
-                ├── Lunas.js
+                ├── Lunians.js
                 ├── PixelCryptoPuppies.js
                 └── TheMoeGirls.js
             ├── App.js
