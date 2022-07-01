@@ -159,7 +159,6 @@ const CloseButton = styled.span`
     padding: 20px 25px 0 0;
     font-size: 25px;
     font-weight: bold;
-    cursor: pointer;
     color: #6c718c;
   `
 const ModalTitle = styled.h1`

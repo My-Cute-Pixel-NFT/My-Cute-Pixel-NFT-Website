@@ -47,7 +47,6 @@ const NFTCard = (props) => {
     margin: auto 12px;
     border-radius: 10px;
     padding: 0px;
-    cursor: pointer;
     &:hover {
       width: 225px;
       height: 308px;

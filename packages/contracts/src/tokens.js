@@ -48,4 +48,4 @@ export const moegirlsTokens = [
     "87732650109963583722318869951661459361005265587619317921855322661917487529985"
 ];
 
-export const seedpodIds = ["101", "102"];
+export const seedpodIds = ["910", "911"];

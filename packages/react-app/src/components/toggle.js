@@ -25,7 +25,6 @@ const StyledToggle = styled.button`
     display: flex;
     place-items: center;
     font-size: 2rem;
-    cursor: pointer;
     z-index: 98;
     height:60px;
 

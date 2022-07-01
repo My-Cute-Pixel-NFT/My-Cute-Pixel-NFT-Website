@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { RiTwitterLine, RiInstagramLine, RiMediumLine, RiGithubLine } from "react-icons/ri";
+import { RiTwitterLine, RiInstagramLine, RiMediumLine, RiGithubLine, RiMailLine } from "react-icons/ri";
 import Slide from 'react-reveal/Slide';
 import { MoralisProvider } from "react-moralis";
 
@@ -19,6 +19,7 @@ import Lunians from "./pages/Lunians";
 import Commissions from "./pages/Commissions";
 
 import spaceBack from "./img/WholeSpaceBackground.png";
+import cursor from "./img/cursor.png";
 
 require('dotenv').config();
 
@@ -43,6 +44,7 @@ function App() {
     const [socialBut2Color, setSocialBut2Color] = useState("#e8f8f8");
     const [socialBut3Color, setSocialBut3Color] = useState("#e8f8f8");
     const [socialBut4Color, setSocialBut4Color] = useState("#e8f8f8");
+    const [socialBut5Color, setSocialBut5Color] = useState("#e8f8f8");
 
     const menuButStyle={
       color:`${menuButColor}`
@@ -58,6 +60,9 @@ function App() {
     };
     const socialBut4Style={
       color:`${socialBut4Color}`
+    };
+    const socialBut5Style={
+      color:`${socialBut5Color}`
     };
 
     const handleButColorEnter = () => {
@@ -96,6 +101,13 @@ function App() {
       setSocialBut4Color("#e8f8f8");
     };
 
+    const handleSoc5ColorEnter = () => {
+      setSocialBut5Color("#ffbbc2");
+    };
+    const handleSoc5ColorLeave = () => {
+      setSocialBut5Color("#e8f8f8");
+    };
+
     return (
       <MoralisProvider appId={MORALIS_ID} serverUrl={MORALIS_SERVER}>
           <div style={styleBackground}>
@@ -125,6 +137,13 @@ function App() {
             </Body>
             <Footer>
                 <Slide left delay={250}>
+                  <a href="mailto:mycutepixel.nft@gmail.com" target="_blank" rel="noreferrer"
+                  style={socialBut5Style} onMouseEnter={handleSoc5ColorEnter} 
+                  onMouseLeave={handleSoc5ColorLeave}>
+                    <RiMailLine />
+                  </a>
+                </Slide>
+                <Slide left delay={250}>
                   <a href="https://twitter.com/mycutepixel_nft" target="_blank" rel="noreferrer"
                   style={socialBut1Style} onMouseEnter={handleSoc1ColorEnter} 
                   onMouseLeave={handleSoc1ColorLeave}>
@@ -138,7 +157,7 @@ function App() {
                     <RiInstagramLine />
                   </a>
                 </Slide>
-                <Slide bottom delay={250}>
+                <Slide right delay={250}>
                   <a href="https://mycutepixel-nft.medium.com" target="_blank" rel="noreferrer"
                   style={socialBut2Style} onMouseEnter={handleSoc2ColorEnter} 
                   onMouseLeave={handleSoc2ColorLeave}>
@@ -162,7 +181,8 @@ const styleBackground = {
   "backgroundImage":"url("+spaceBack+")", 
   "backgroundSize":"cover",
   "backgroundPosition":"center",
-  "backgroundRepeat":"no-repeat"
+  "backgroundRepeat":"no-repeat",
+  "cursor": "url("+cursor+"), auto"
 }
 
 export default App;

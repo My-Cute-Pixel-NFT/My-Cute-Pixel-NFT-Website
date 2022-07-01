@@ -15,7 +15,7 @@ import nebulaseedpod from "./../img/inventory_Nseedpod.png";
 
 const INFURA_ID = process.env.REACT_APP_INFURA_ID;
 const NETWORK = process.env.REACT_APP_NETWORK;
-const NETWORK_TEST = process.env.REACT_APP_NETWORK_TEST;
+// const NETWORK_TEST = process.env.REACT_APP_NETWORK_TEST;
 
 function Inventory({ account, refresh }) {
     const [totalPups, setTotalPups] = useState(0);
@@ -31,8 +31,8 @@ function Inventory({ account, refresh }) {
                     const ceaOS = new Contract(addresses.puppies, abis.erc1155, provider);
                     const numberOfPups = puppiesTokens.length;
                     const numberOfMoe = moegirlsTokens.length;
-                    const providerTest = new InfuraProvider(NETWORK_TEST, INFURA_ID);
-                    let luniansCollection = new Contract(addresses.lunians, abis.lunians.abi, providerTest);
+                    //const providerTest = new InfuraProvider(NETWORK_TEST, INFURA_ID);
+                    let luniansCollection = new Contract(addresses.lunians, abis.lunians.abi, provider);
                     const accountsPups = Array(numberOfPups).fill(account);
                     const accountsMoe = Array(numberOfMoe).fill(account);
                     const tokenBalancePup = 0;await ceaOS.balanceOfBatch(accountsPups, puppiesTokens);

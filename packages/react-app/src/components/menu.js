@@ -101,7 +101,6 @@ const CloseToggle = styled.button`
     display: flex;
     place-items: center;
     font-size: 2rem;
-    cursor: pointer;
 `;
 
 export default Menu;

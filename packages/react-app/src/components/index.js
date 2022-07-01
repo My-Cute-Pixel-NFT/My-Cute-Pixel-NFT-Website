@@ -85,7 +85,6 @@ export const Button = styled.button`
   background-color: #6c718c80;
   border: none;
   border-radius: 8px;
-  cursor: pointer;
   font-size: 15px;
   text-align: center;
   text-decoration: none;
@@ -118,7 +117,6 @@ export const InventoryMenu = styled.div`
     background-color: #6c718c80;
     border: none;
     border-radius: 8px;
-    cursor: default;
     font-size: 15px;
     text-align: center;
     text-decoration: none;

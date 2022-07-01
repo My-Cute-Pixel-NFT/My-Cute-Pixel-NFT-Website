@@ -95,7 +95,6 @@ function WalletButton({ provider, setProvider, loadWeb3Modal, account, setAccoun
         window.ethereum.on("accountsChanged", (accounts) => {
             if (account !== "") {
                 if (typeof(accounts[0]) !== "undefined") {
-                    console.log("Selected account: " + accounts[0]);
                     setAccount(accounts[0]);
                     setRendered(<GreenLargeWallet account={accounts[0]}/>)
                 } else {

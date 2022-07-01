@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Image, Link } from "./../components/index";
 
-function FlipCard({ frontImage, frontTitle, backText, link }) {
+function FlipCard({ frontImage, frontTitle, backText, link, padding }) {
     const [isFlipped, setIsFlipped] = useState(false);
     const flippedHandler = () => {
         setIsFlipped(current => !current);
@@ -27,7 +27,7 @@ function FlipCard({ frontImage, frontTitle, backText, link }) {
                         {frontTitle}
                     </div>
                     <Image src={frontImage} alt="placeholder" style={{"alignSelf":"center", 
-                        "marginBottom":"0", "width":"100%", "height":"auto"}} />
+                        "marginBottom":"0", "padding":padding, "width":"100%", "height":"auto"}} />
                 </DivTextImage>
 
                 <DivTextImage onClick={flippedHandler} style={{"borderStyle":"ridge", 
@@ -36,7 +36,10 @@ function FlipCard({ frontImage, frontTitle, backText, link }) {
                         "padding":"1rem 1rem 0 1rem","fontSize":"130%"}}>
                         {backText}
                     </div>
-                    <Link href={link} style={{"margin":"1rem 0 1rem 0"}}>Read the story in Medium</Link>
+                    {link ? 
+                        <Link href={link} style={{"margin":"1rem 0 1rem 0"}}>Read the story in Medium</Link>
+                        : <p style={{"margin":"1rem 0 1rem 0", "fontWeight":"bold", "color":"#ffbbc2"}}>Coming soon!</p>
+                    }
                 </DivTextImage>
             </ReactCardFlip>
         );
