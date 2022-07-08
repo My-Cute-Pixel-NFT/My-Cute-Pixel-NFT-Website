@@ -34,7 +34,7 @@ import lunianseedpodback from "./../img/LunianSeedpodBack.png";
 import nebulaseedpodback from "./../img/NebulaSeedpod.png";
 import roadmap from "./../img/Roadmap.gif";
 import saleDate from "./../img/saleDate.png";
-import lunianSample from "./../img/LunianSample.png";
+import lunianSample from "./../img/ThreeLunians.gif";
 import tease from "./../img/Tease.png";
 import hatchingSeedpods from "./../img/HatchingSeedpods.png";
 import hatchingSeedpodsVert from "./../img/HatchingSeedpodsVert.png";
@@ -725,6 +725,87 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                     Little by little, this planet seems to be revealing some of its many secrets...
                 </Paragraph>
 
+                <Hatching>
+                    <Top>
+                        THE SEEDPODS
+                    </Top>
+                    <Paragraph>
+                        Hatch your seedpods here when planet Lunia had unveiled "all" its mysteries, and 
+                        get a fantastic and enigmatic creature with random rarities.
+                    </Paragraph>
+                    <Fade delay={900}>
+                        <Image src={tease} alt="Lunian tease" style={{"marginTop":"0.7rem", "marginBottom":"0"}} />
+                    </Fade>
+                    <Zoom top delay={50}>
+                        <div style={{"marginBottom":"3.7rem"}}>
+                            <Image src={hatchingSeedpodsImg} alt="Hatching Seedpods" style={imgStyleHatchingSeedpods} />
+                            <div style={stampLunian1CSS}>
+                                Lunian<br/>seedpods
+                            </div>
+                            <div style={stampLunianPriceCSS}>
+                                0.03 ETH
+                            </div>
+                            <div style={stampLunian2CSS}>
+                                Common<br/>&<br/>cheaper
+                            </div>
+                            <div style={stampNebula1CSS}>
+                                Nebula<br/>seedpods
+                            </div>
+                            <div style={stampNebulaPriceCSS}>
+                                0.06 ETH
+                            </div>
+                            <div style={stampNebula2CSS}>
+                                Higher rarities<br/>&<br/>limited
+                            </div>
+                        </div>
+                    </Zoom>
+                    <SeedpodsAvailability>
+                        <SeedpodsRemaining>
+                            <div style={{"fontFamily":"Holo-Jacket", "fontSize":"150%", "fontWeight":"bold", "color":"rgba(133,255,243)"}}>
+                                Remaining Lunian Seedpods
+                            </div>
+                            <RemainingSeedpods max={859} remaining={availableNebulaSeedpods} />
+                        </SeedpodsRemaining>
+                        <BuySeedpod>
+                            <a className="BuyButton" href="https://www.opensea.com" target="_blank" rel="noreferrer">Buy a seedpod!</a>
+                        </BuySeedpod>
+                        <SeedpodsRemaining>
+                            <div style={{"fontFamily":"Holo-Jacket", "fontSize":"150%", "fontWeight":"bold", "color":"rgba(133,255,243)"}}>
+                                Remaining Nebula Seedpods
+                            </div>
+                            <RemainingSeedpods max={50} remaining={availableLunianSeedpods} />
+                        </SeedpodsRemaining>
+                    </SeedpodsAvailability>
+                </Hatching>
+
+                <div style={{"alignSelf":"center", "marginBottom":"1rem", "boxShadow":buttonShadow}} 
+                    onClick={goToTop} onMouseEnter={press} onMouseLeave={unpress}>
+                    <Image src={button} alt="go-top" style={{"alignSelf":"center", "marginBottom":"0", 
+                        "marginTop":"0", "height":"70px", "width":"auto", "paddingTop":buttonPaddingTop}} />
+                </div>
+
+                <Lore>
+                    <div style={{"display":"flex", "justifyContent":"space-between", "width":"100%"}}>
+                        <div style={{"borderTop":"groove rgb(179, 227, 227)", "flex":"0 1 35%"}}/>
+                        <Top>
+                            DISCOVER MORE
+                        </Top>
+                        <div style={{"borderTop":"groove rgb(179, 227, 227)", "flex":"0 1 35%"}}/>
+                    </div>
+                    <Grid>
+                        <Flip left>
+                            <MediumCard frontImage={blackhole} frontTitle="Origins" backText={abstract1} link={link1} padding={"0"}/>
+                            <MediumCard frontImage={lunia} frontTitle="Lunia" backText={abstract2} link={link2} padding={"2rem"}/>
+                            <MediumCard frontImage={lunianseedpodback} frontTitle="Lunian Seedpods" backText={abstract3} link={link3} padding={"0"}/>
+                            <MediumCard frontImage={poofpoof} frontTitle="Poof-poofs" backText={abstract4} link={link4} padding={"0"}/>
+                            <MediumCard frontImage={nebulaseedpodback} frontTitle="Nebula Seedpods" backText={abstract5} link={link5} padding={"0"}/>
+                            <MediumCard frontImage={roadmap} frontTitle="Roadmap" backText={abstract6} link={link6} padding={"0"}/>
+                            <MediumCard frontImage={saleDate} frontTitle="Sale Info" backText={abstract7} link={link7} padding={"0"}/>
+                            <MediumCard frontImage={lunianSample} frontTitle="Lunians" backText={abstract8} link={link8} padding={"0"}/>
+                        </Flip>
+                    </Grid>
+                </Lore>
+
                 <Reasons>
                     <Top>
                         KEY FEATURES
@@ -802,87 +883,6 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                         </Fade>
                     </div>
                 </Reasons>
-
-                <div style={{"alignSelf":"center", "marginBottom":"1rem", "boxShadow":buttonShadow}} 
-                    onClick={goToTop} onMouseEnter={press} onMouseLeave={unpress}>
-                    <Image src={button} alt="go-top" style={{"alignSelf":"center", "marginBottom":"0", 
-                        "marginTop":"0", "height":"70px", "width":"auto", "paddingTop":buttonPaddingTop}} />
-                </div>
-
-                <Lore>
-                    <div style={{"display":"flex", "justifyContent":"space-between", "width":"100%"}}>
-                        <div style={{"borderTop":"groove rgb(179, 227, 227)", "flex":"0 1 35%"}}/>
-                        <Top>
-                            DISCOVER MORE
-                        </Top>
-                        <div style={{"borderTop":"groove rgb(179, 227, 227)", "flex":"0 1 35%"}}/>
-                    </div>
-                    <Grid>
-                        <Flip left>
-                            <MediumCard frontImage={blackhole} frontTitle="Origins" backText={abstract1} link={link1} padding={"0"}/>
-                            <MediumCard frontImage={lunia} frontTitle="Lunia" backText={abstract2} link={link2} padding={"2rem"}/>
-                            <MediumCard frontImage={lunianseedpodback} frontTitle="Lunian Seedpods" backText={abstract3} link={link3} padding={"0"}/>
-                            <MediumCard frontImage={poofpoof} frontTitle="Poof-poofs" backText={abstract4} link={link4} padding={"0"}/>
-                            <MediumCard frontImage={nebulaseedpodback} frontTitle="Nebula Seedpods" backText={abstract5} link={link5} padding={"0"}/>
-                            <MediumCard frontImage={roadmap} frontTitle="Roadmap" backText={abstract6} link={link6} padding={"0"}/>
-                            <MediumCard frontImage={saleDate} frontTitle="Sale Info" backText={abstract7} link={link7} padding={"0"}/>
-                            <MediumCard frontImage={lunianSample} frontTitle="Lunians" backText={abstract8} link={link8} padding={"0"}/>
-                        </Flip>
-                    </Grid>
-                </Lore>
-
-                <Hatching>
-                    <Top>
-                        THE SEEDPODS
-                    </Top>
-                    <Paragraph>
-                        Hatch your seedpods here when planet Lunia has unveiled "all" its mysteries, and 
-                        get a fantastic and enigmatic creature with random rarities.
-                    </Paragraph>
-                    <Fade delay={900}>
-                        <Image src={tease} alt="Lunian tease" style={{"marginTop":"0.7rem", "marginBottom":"0"}} />
-                    </Fade>
-                    <Zoom top delay={50}>
-                        <div style={{"marginBottom":"3.7rem"}}>
-                            <Image src={hatchingSeedpodsImg} alt="Hatching Seedpods" style={imgStyleHatchingSeedpods} />
-                            <div style={stampLunian1CSS}>
-                                Lunian<br/>seedpods
-                            </div>
-                            <div style={stampLunianPriceCSS}>
-                                0.03 ETH
-                            </div>
-                            <div style={stampLunian2CSS}>
-                                Common<br/>&<br/>cheaper
-                            </div>
-                            <div style={stampNebula1CSS}>
-                                Nebula<br/>seedpods
-                            </div>
-                            <div style={stampNebulaPriceCSS}>
-                                0.06 ETH
-                            </div>
-                            <div style={stampNebula2CSS}>
-                                Higher rarities<br/>&<br/>limited
-                            </div>
-                        </div>
-                    </Zoom>
-                    <SeedpodsAvailability>
-                        <SeedpodsRemaining>
-                            <div style={{"fontFamily":"Holo-Jacket", "fontSize":"150%", "fontWeight":"bold", "color":"rgba(133,255,243)"}}>
-                                Remaining Lunian Seedpods
-                            </div>
-                            <RemainingSeedpods max={859} remaining={availableNebulaSeedpods} />
-                        </SeedpodsRemaining>
-                        <BuySeedpod>
-                            <a className="BuyButton" href="https://www.opensea.com" target="_blank" rel="noreferrer">Buy a seedpod!</a>
-                        </BuySeedpod>
-                        <SeedpodsRemaining>
-                            <div style={{"fontFamily":"Holo-Jacket", "fontSize":"150%", "fontWeight":"bold", "color":"rgba(133,255,243)"}}>
-                                Remaining Nebula Seedpods
-                            </div>
-                            <RemainingSeedpods max={50} remaining={availableLunianSeedpods} />
-                        </SeedpodsRemaining>
-                    </SeedpodsAvailability>
-                </Hatching>
 
                 <div style={{"alignSelf":"center", "marginTop":"2rem", "marginBottom":"1.5rem", "boxShadow":buttonShadow}} 
                     onClick={goToTop} onMouseEnter={press} onMouseLeave={unpress}>
@@ -1542,7 +1542,7 @@ const Hatching = styled.div`
     width: 100%;
     position: relative;
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     margin-bottom: 0;
     display: flex;
     justify-content: center;
