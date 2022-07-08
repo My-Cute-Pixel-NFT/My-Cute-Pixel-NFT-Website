@@ -17,8 +17,8 @@ const Toggle = ({style, handleNavToggle, handleButColorEnter, handleButColorLeav
 
 const StyledToggle = styled.button`
     position: fixed;
-    top: 8px;
-    right: 8px;
+    top: 6px;
+    right: 6px;
     color: #6c718c;
     background: #e8f8f8;
     padding: .75rem;

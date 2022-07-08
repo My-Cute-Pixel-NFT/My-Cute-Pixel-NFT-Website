@@ -22,6 +22,7 @@ import { Image } from "./../components/index";
 import MediumCard from "./../components/flipCard";
 import { StyledCollection, Heading, Content, Paragraph } from 
 "./../components/collectionPagesComponents";
+import './BuyButton.css'; 
 
 import luniansLogo from "./../img/LuniansLogo.png";
 import numberNFTs from "./../img/909.png";
@@ -53,6 +54,7 @@ import roadmapNetwork from "./../img/Roadmap/Network.png";
 import roadmapStation from "./../img/Roadmap/spaceStation.png";
 import roadmapSETI from "./../img/Roadmap/SETI.png";
 import roadmapFrame from "./../img/Roadmap/frame.png";
+import RemainingSeedpods from "../components/RemainingSeedpods";
 
 const toolTipCredits = "Planet and background created using Deep-Fold's <br/> Planet and Space generators";
 const abstract1 = "\"A riveting tale about forces of cosmic proportions\".";
@@ -307,6 +309,9 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
     const [cycleZoom, setCycleZoom] = useState(false);
     const [unknown, setUnknown] = useState(false);
     const [unknownColor, setUnknownColor] = useState("#e8f8f8");
+    const [availableNebulaSeedpods, setAvailableNebulaSeedpods] = useState(50);
+    const [availableLunianSeedpods, setAvailableLunianSeedpods] = useState(859);
+    const [getRemainingSeedpods, setGetRemainingSeedpods] = useState(true);
 
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
@@ -627,6 +632,27 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
         }
     }, [currentLunianIndex, mounted, lunianIds]);
 
+    useEffect(() => {
+
+        if (getRemainingSeedpods) {
+            async function getAvailableNebulaSeedpods() {
+                const availableNebula = await luniansCollection.balanceOf("0x191961a1100a1F9A25c5884a9B56c93F32E6eE70", seedpodIds[0]);
+                setAvailableNebulaSeedpods(availableNebula.toNumber());
+            };
+
+            async function getAvailableLunianSeedpods() {
+                const availableLunian = await luniansCollection.balanceOf("0x191961a1100a1F9A25c5884a9B56c93F32E6eE70", seedpodIds[1]);
+                setAvailableLunianSeedpods(availableLunian.toNumber());
+            };
+
+            getAvailableNebulaSeedpods();
+            getAvailableLunianSeedpods();
+        } else {
+            setGetRemainingSeedpods(false);
+        }
+
+    }, [getRemainingSeedpods]);
+
     useLayoutEffect(() => {
         const updateImage = () => {
           if (window.innerWidth > 700) {
@@ -817,7 +843,7 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                         <Image src={tease} alt="Lunian tease" style={{"marginTop":"0.7rem", "marginBottom":"0"}} />
                     </Fade>
                     <Zoom top delay={50}>
-                        <div>
+                        <div style={{"marginBottom":"3.7rem"}}>
                             <Image src={hatchingSeedpodsImg} alt="Hatching Seedpods" style={imgStyleHatchingSeedpods} />
                             <div style={stampLunian1CSS}>
                                 Lunian<br/>seedpods
@@ -839,6 +865,23 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                             </div>
                         </div>
                     </Zoom>
+                    <SeedpodsAvailability>
+                        <SeedpodsRemaining>
+                            <div style={{"fontFamily":"Holo-Jacket", "fontSize":"150%", "fontWeight":"bold", "color":"rgba(133,255,243)"}}>
+                                Remaining Lunian Seedpods
+                            </div>
+                            <RemainingSeedpods max={859} remaining={availableNebulaSeedpods} />
+                        </SeedpodsRemaining>
+                        <BuySeedpod>
+                            <a className="BuyButton" href="https://www.opensea.com" target="_blank" rel="noreferrer">Buy a seedpod!</a>
+                        </BuySeedpod>
+                        <SeedpodsRemaining>
+                            <div style={{"fontFamily":"Holo-Jacket", "fontSize":"150%", "fontWeight":"bold", "color":"rgba(133,255,243)"}}>
+                                Remaining Nebula Seedpods
+                            </div>
+                            <RemainingSeedpods max={50} remaining={availableLunianSeedpods} />
+                        </SeedpodsRemaining>
+                    </SeedpodsAvailability>
                 </Hatching>
 
                 <div style={{"alignSelf":"center", "marginTop":"2rem", "marginBottom":"1.5rem", "boxShadow":buttonShadow}} 
@@ -934,11 +977,23 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                     <Image src={roadmapFrame} alt="roadmap-frame" style={roadmapFrameStyle}/>
                 </div>
 
-                {/*<Hatching>
+                <Hatching>
                     <Top style={{"fontSize":"2.5rem"}}>
                         HATCHING
                     </Top>
                     <Work>
+                        <Overlay display="flex">
+                            <Wait>
+                                <Flash forever={true} duration={6000}>
+                                    <p style={{"textAlign":"center", "fontFamily":"Holo-Jacket", "fontSize":"200%", "fontWeight":"bold"}}>
+                                        The time has not arrived yet...
+                                        <br />
+                                        <br />
+                                        Wait for it!
+                                    </p>
+                                </Flash>
+                            </Wait>
+                        </Overlay>
                         <Seedpods>
                             <Dropdown>
                                 <Dropdown.Toggle size="lg" disabled={disableSeedpodSelector} style={{"backgroundColor":backColor}}>
@@ -1014,10 +1069,10 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                             </div>
                         </Minted>
                     </Work>
-                </Hatching>*/}
+                </Hatching>
 
-                <Image src={questionmark} alt="seedpods-hatching" style={{"alignSelf":"center", 
-                    "marginBottom":"1rem", "marginTop":"0"}} />
+                {/*<Image src={questionmark} alt="seedpods-hatching" style={{"alignSelf":"center", 
+                    "marginBottom":"1rem", "marginTop":"0"}} />*/}
 
                 <Coming>More coming soon!</Coming>
 
@@ -1419,6 +1474,7 @@ const Grid = styled.div`
 const Work = styled.div`
     width: 90%;
     display: grid;
+    position: relative;
     grid-template-columns: 1fr 1fr;
     column-gap: 50px;
     justify-items: center;
@@ -1428,6 +1484,34 @@ const Work = styled.div`
         grid-template-columns: 1fr;
         margin-bottom: -5rem;
     }
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  display: ${(props) => (props.display)};
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+
+  @media(max-width: 1200px) {
+    align-items: start;
+  }
+`;
+
+const Wait = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.4);
+  padding: 5px 10px;
+  width: 85%;
+  @media(max-width: 1200px) {
+    margin-top: 20%;
+  }
 `;
 
 const Seedpods = styled.div`
@@ -1506,6 +1590,39 @@ const roadmapFrameStyle = {
     "alignSelf":"center",
     "marginBottom":"0"
 };
+
+const SeedpodsAvailability = styled.div`
+    display: flex; 
+    justify-content: space-around;
+    margin: 0.3rem 0;
+    width: 100%; 
+    align-items: center;
+    @media(max-width: 900px) {
+        flex-direction: column;
+    }
+`;
+
+const SeedpodsRemaining = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 2.5rem;
+    @media(max-width: 1000px) {
+        font-size: 125%;
+    }
+    @media(max-width: 700px) {
+        font-size: 150%;
+    }
+`;
+
+const BuySeedpod = styled.div`
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+`;
 
 const Dot1Style = styled.div`
     position: absolute;

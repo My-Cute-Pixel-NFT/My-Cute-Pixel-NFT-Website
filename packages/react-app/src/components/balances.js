@@ -79,25 +79,26 @@ function Inventory({ account, refresh }) {
 
     return (
         <InventoryMenu>
-            <div data-tip data-for="registerTipPuppies" style={{"display":"flex"}}>
-                <InventoryImage src={puppies} alt="puppies-logo" />
-                <div style={{"color":"#d3d3d3"}}>x{totalPups}</div>
+            <div style={{"margin":"5px 5px"}}>
+                <div data-tip data-for="registerTipPuppies" style={{"display":"flex", "margin":"5px 0"}}>
+                    <InventoryImage src={puppies} alt="puppies-logo" />
+                    <div style={{"color":"#d3d3d3"}}>x{totalPups}</div>
+                </div>
+                <div data-tip data-for="registerTipMoe" style={{"display":"flex", "margin":"5px 0"}}>
+                    <InventoryImage src={moe} alt="moe-logo" />
+                    <div style={{"color":"#d3d3d3"}}>x{totalMoe}</div>
+                </div>
             </div>
-            <div style={{"height":"15px", "width":"15px"}}/>
-            <div data-tip data-for="registerTipMoe" style={{"display":"flex"}}>
-                <InventoryImage src={moe} alt="moe-logo" />
-                <div style={{"color":"#d3d3d3"}}>x{totalMoe}</div>
+            <div style={{"margin":"5px 5px"}}>
+                <div data-tip data-for="registerTipSeedpod" style={{"display":"flex", "margin":"5px 0"}}>
+                    <InventoryImage src={lunianseedpod} alt="moe-logo" />
+                    <div style={{"color":"#d3d3d3"}}>x{totalLunianSeedpods}</div>
+                </div>
+                <div data-tip data-for="registerTipSeedpod" style={{"display":"flex", "margin":"5px 0"}}>
+                    <InventoryImage src={nebulaseedpod} alt="moe-logo" />
+                    <div style={{"color":"#d3d3d3"}}>x{totalNebulaSeedpods}</div>
+                </div>
             </div>
-            {/*<div style={{"height":"15px", "width":"15px"}}/>
-            <div data-tip data-for="registerTipSeedpod" style={{"display":"flex"}}>
-                <InventoryImage src={lunianseedpod} alt="moe-logo" />
-                <div style={{"color":"#d3d3d3"}}>x{totalLunianSeedpods}</div>
-            </div>
-            <div style={{"height":"15px", "width":"15px"}}/>
-            <div data-tip data-for="registerTipSeedpod" style={{"display":"flex"}}>
-                <InventoryImage src={nebulaseedpod} alt="moe-logo" />
-                <div style={{"color":"#d3d3d3"}}>x{totalNebulaSeedpods}</div>
-            </div>*/}
 
             <ReactTooltip id="registerTipPuppies" place="right" effect="solid">
                 {toolTipPuppies}

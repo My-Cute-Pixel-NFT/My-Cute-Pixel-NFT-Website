@@ -132,7 +132,7 @@ const TheMoeGirls = (account) => {
                 style={RoadmapImgStyle} />
                 <Paragraph>We accept commissions for this collection! You'll find more than 32 Moe Girls in OpenSea
                            because of this and due to the special Christmas Editions that were given to early buyers.
-                           If you want your own, custom Moe Girl, based on any character you like, contact us on Twitter.
+                           If you want your own, custom Moe Girl, based on any character you like, contact us.
                 </Paragraph>
                 <DivTextImage>
                     <Link href="https://opensea.io/collection/the-moe-girls" style={{"display":"flex", "flexDirection":"column"}}>

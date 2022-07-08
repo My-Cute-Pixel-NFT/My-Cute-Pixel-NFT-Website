@@ -89,7 +89,7 @@ export const Button = styled.button`
   text-align: center;
   text-decoration: none;
   padding: 12px 24px;
-  margin: 8px 0 0 5px;
+  margin: 6px 0 0 5px;
   @media screen and (max-width: 1025px) {
     font-size: 13px;
     padding: 5px 4px;
@@ -120,15 +120,10 @@ export const InventoryMenu = styled.div`
     font-size: 15px;
     text-align: center;
     text-decoration: none;
-    padding: 12px 24px;
     display: flex;
     flex-direction: column;
     min-height: 50px;
-    margin: 8px 0 0 5px;
-    @media screen and (max-width: 1025px) {
-      font-size: 13px;
-      height: 105px;
-    }
+    margin: 6px 0 0 5px;
     @media screen and (max-width: 845px) {
       height: 50px;
       padding: 5px 4px;

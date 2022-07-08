@@ -317,17 +317,6 @@ const Grid = styled.div`
   }
 `;
 
-const Connect = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0,0,0,0.2);
-  padding: 5px 10px;
-  @media(max-width: 1200px) {
-    margin-top: 20%;
-  }
-`;
-
 const Overlay = styled.div`
   position: absolute;
   display: ${(props) => (props.display)};
@@ -340,6 +329,17 @@ const Overlay = styled.div`
   z-index: 2;
   @media(max-width: 1200px) {
     align-items: start;
+  }
+`;
+
+const Connect = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.2);
+  padding: 5px 10px;
+  @media(max-width: 1200px) {
+    margin-top: 20%;
   }
 `;
 
