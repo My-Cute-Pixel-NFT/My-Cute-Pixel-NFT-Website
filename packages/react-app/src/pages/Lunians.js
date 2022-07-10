@@ -87,7 +87,7 @@ const updateTexta = "Phase completed";
 const updateTextb = "Getting status update...";
 const resultText1a = "Congratulations, you got a lunian!";
 const resultText1b = "Please take good care of it.";
-const baseLunianImgPath = "https://ipfs.io/ipfs/QmQfsudvCAmFWLzDfNrf4wWozPdjNvzmwpnuU11d8cpzcK/";
+const baseLunianImgPath = "https://ipfs.io/ipfs/QmQfsudvCAmFWLzDfNrf4wWozPdjNvzmwpnuU11d8cpzcK/"; // TODO: Replace with correct CID
 
 // INFURA
 const INFURA_ID = process.env.REACT_APP_INFURA_ID;
@@ -730,8 +730,7 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                         THE SEEDPODS
                     </Top>
                     <Paragraph>
-                        Hatch your seedpods here when planet Lunia had unveiled "all" its mysteries, and 
-                        get a fantastic and enigmatic creature with random rarities.
+                        Learn about the two type of seedpods you can find in Lunia.
                     </Paragraph>
                     <Fade delay={900}>
                         <Image src={tease} alt="Lunian tease" style={{"marginTop":"0.7rem", "marginBottom":"0"}} />
@@ -764,7 +763,7 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                             <div style={{"fontFamily":"Holo-Jacket", "fontSize":"150%", "fontWeight":"bold", "color":"rgba(133,255,243)"}}>
                                 Remaining Lunian Seedpods
                             </div>
-                            <RemainingSeedpods max={859} remaining={availableNebulaSeedpods} />
+                            <RemainingSeedpods max={859} remaining={availableLunianSeedpods} />
                         </SeedpodsRemaining>
                         <BuySeedpod>
                             <a className="BuyButton" href="https://www.opensea.com" target="_blank" rel="noreferrer">Buy a seedpod!</a>
@@ -773,7 +772,7 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                             <div style={{"fontFamily":"Holo-Jacket", "fontSize":"150%", "fontWeight":"bold", "color":"rgba(133,255,243)"}}>
                                 Remaining Nebula Seedpods
                             </div>
-                            <RemainingSeedpods max={50} remaining={availableLunianSeedpods} />
+                            <RemainingSeedpods max={50} remaining={availableNebulaSeedpods} />
                         </SeedpodsRemaining>
                     </SeedpodsAvailability>
                 </Hatching>
@@ -981,8 +980,12 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                     <Top style={{"fontSize":"2.5rem"}}>
                         HATCHING
                     </Top>
+                    <Paragraph>
+                        Hatch your seedpods here when planet Lunia had unveiled "all" its mysteries, and 
+                        get a fantastic and enigmatic creature with random rarities.
+                    </Paragraph>
                     <Work>
-                        <Overlay display="flex">
+                        {/*<Overlay display="flex">
                             <Wait>
                                 <Flash forever={true} duration={6000}>
                                     <p style={{"textAlign":"center", "fontFamily":"Holo-Jacket", "fontSize":"200%", "fontWeight":"bold"}}>
@@ -993,7 +996,7 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                                     </p>
                                 </Flash>
                             </Wait>
-                        </Overlay>
+                        </Overlay>*/}
                         <Seedpods>
                             <Dropdown>
                                 <Dropdown.Toggle size="lg" disabled={disableSeedpodSelector} style={{"backgroundColor":backColor}}>
