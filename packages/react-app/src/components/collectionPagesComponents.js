@@ -58,15 +58,27 @@ export const DivTextImage = styled.div`
     display: flex;
     background-image: url(${sea});
     background-position: 50% 70%;
-    width:105.3%;
+    width: 105.3%;
     height: 216px;
-    margin-left:-2.7%;
+    margin-left: -2.7%;
     margin-top: 1rem;
     justify-content: center;
     align-items: center;
     @media screen and (max-width: 845px) {
         flex-direction: column;
     }
+`;
+
+export const DivTextTransparency = styled.div`
+    display: flex;
+    width: 105.3%;
+    height: 216px;
+    margin-left: -2.7%;
+    margin-top: 1rem;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+    background-color: #6c718c80;
 `;
 
 export const DivImage = styled.div`

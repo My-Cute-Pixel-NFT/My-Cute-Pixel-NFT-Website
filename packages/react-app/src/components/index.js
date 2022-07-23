@@ -53,6 +53,53 @@ export const Image = styled.img`
   pointer-events: none;
 `;
 
+export const ImagePartnersWidth = styled.img`
+  pointer-events: none;
+  height: 100px;
+  width: auto;
+
+  @media screen and (max-width: 1024px) {
+    width: 30vw;
+    height: auto;
+  }
+`;
+
+export const ImagePartnersHeight = styled.img`
+  pointer-events: none;
+  height: 100px;
+  width: auto;
+
+  @media screen and (max-width: 1024px) {
+    height: 90px;
+    width: auto;
+  }
+
+  @media screen and (max-width: 700px) {
+    height: 65px;
+    width: auto;
+  }
+
+  @media screen and (max-width: 640px) {
+    height: 55px;
+    width: auto;
+  }
+`;
+
+export const ImageBannerLunians = styled.img`
+  margin-bottom: 12px;
+  pointer-events: none;
+  align-self: center;
+  width: 100%;
+  height: auto;
+
+  @media screen and (min-width: 1920px) {
+    margin-top: -25px;
+  }
+  @media screen and (min-width: 2561px) {
+    margin-top: -40px;
+  }
+`;
+
 export const InventoryImage = styled.img`
   height: 20px;
   pointer-events: none;

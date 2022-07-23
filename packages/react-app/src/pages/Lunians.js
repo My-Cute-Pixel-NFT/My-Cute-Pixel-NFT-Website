@@ -18,15 +18,17 @@ import { InfuraProvider, Web3Provider } from "@ethersproject/providers";
 import "@ethersproject/bignumber";
 import { addresses, abis, seedpodIds } from "@project/contracts";
 
-import { Image } from "./../components/index";
-import MediumCard from "./../components/flipCard";
-import { StyledCollection, Heading, Content, Paragraph } from 
-"./../components/collectionPagesComponents";
+import { Image, ImageBannerLunians, ImagePartnersWidth, ImagePartnersHeight, Link } from "../components/index";
+import MediumCard from "../components/flipCard";
+import { StyledCollection, Heading, Content, Paragraph, DivTextTransparency, DivImage, OpenSea } from 
+"../components/collectionPagesComponents";
+import RemainingSeedpods from "../components/RemainingSeedpods";
 import './BuyButton.css'; 
 
 import luniansLogo from "./../img/LuniansLogo.png";
 import numberNFTs from "./../img/909.png";
 import lunia from "./../img/Lunia.gif";
+import bannerLunians from "./../img/bannerLunians.jpg";
 import poofpoof from "./../img/Poof-Poof.gif";
 //import animatedlunianseedpod from "./../img/AnimatedLunianSeedpod.gif";
 import blackhole from "./../img/BlackHole.jpg";
@@ -40,6 +42,7 @@ import hatchingSeedpods from "./../img/HatchingSeedpods.png";
 import hatchingSeedpodsVert from "./../img/HatchingSeedpodsVert.png";
 import twoseedpods from "./../img/TwoSeedpods.gif";
 import button from "./../img/Button.png";
+import lunianAnatomy from "./../img/LunianAnatomy.gif";
 import questionmark from "./../img/Question.gif";
 import loading from "./../img/Loading.gif";
 import roadmapBackground from "./../img/Roadmap/backgroundFrame.png";
@@ -54,7 +57,9 @@ import roadmapNetwork from "./../img/Roadmap/Network.png";
 import roadmapStation from "./../img/Roadmap/spaceStation.png";
 import roadmapSETI from "./../img/Roadmap/SETI.png";
 import roadmapFrame from "./../img/Roadmap/frame.png";
-import RemainingSeedpods from "../components/RemainingSeedpods";
+import chainlink from "./../img/chainlink.png";
+import polygon from "./../img/polygon.webp";
+import ipfs from "./../img/ipfs.png";
 
 const toolTipCredits = "Planet and background created using Deep-Fold's <br/> Planet and Space generators";
 const abstract1 = "\"A riveting tale about forces of cosmic proportions\".";
@@ -636,12 +641,12 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
 
         if (getRemainingSeedpods) {
             async function getAvailableNebulaSeedpods() {
-                const availableNebula = await luniansCollection.balanceOf("0x191961a1100a1F9A25c5884a9B56c93F32E6eE70", seedpodIds[0]);
+                const availableNebula = await luniansCollection.balanceOf("0xC1F6EB960A33378Cf1Ab3F4fDa5E252C86CFd888", seedpodIds[0]);
                 setAvailableNebulaSeedpods(availableNebula.toNumber());
             };
 
             async function getAvailableLunianSeedpods() {
-                const availableLunian = await luniansCollection.balanceOf("0x191961a1100a1F9A25c5884a9B56c93F32E6eE70", seedpodIds[1]);
+                const availableLunian = await luniansCollection.balanceOf("0xC1F6EB960A33378Cf1Ab3F4fDa5E252C86CFd888", seedpodIds[1]);
                 setAvailableLunianSeedpods(availableLunian.toNumber());
             };
 
@@ -701,10 +706,12 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                 <SpaceBackground data-tip data-for="registerTipCredits" data-html="true">
                     <div style={{"position":"absolute", "marginLeft":"auto", "marginRight":"auto", "left":"0", "right":"0", "textAlign":"center", "marginTop":"7%"}}>
                         <Flash forever={true} duration={6000}>
-                            <SaleInfo>
-                                <p>SEEDPODS SALE STARTS</p>
-                                <p>JULY, 12TH 2022</p>
-                            </SaleInfo>
+                            <a href="https://opensea.io/collection/lunians" target="_blank" rel="noreferrer">
+                                <SaleInfo>
+                                    <p>SEEDPODS PRE-SALE</p>
+                                    <p>IS NOW LIVE</p>
+                                </SaleInfo>
+                            </a>
                         </Flash>
                     </div>
                     <Image src={lunia} alt="lunia-planet" style={{"alignSelf":"center", 
@@ -725,11 +732,16 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                     Little by little, this planet seems to be revealing some of its many secrets...
                 </Paragraph>
 
-                <Hatching>
+                <Paragraph style={{"maxHeight":"650px", "overflow":"hidden"}}>
+                    <ImageBannerLunians src={bannerLunians} alt="lunians-banner"/>
+                </Paragraph>
+
+                <Section>
                     <Top>
                         THE SEEDPODS
                     </Top>
                     <Paragraph>
+                        The seedpods are the capsules in which the lunians escaped from the blackhole. 
                         Learn about the two type of seedpods you can find in Lunia.
                     </Paragraph>
                     <Fade delay={900}>
@@ -766,7 +778,7 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                             <RemainingSeedpods max={859} remaining={availableLunianSeedpods} />
                         </SeedpodsRemaining>
                         <BuySeedpod>
-                            <a className="BuyButton" href="https://www.opensea.com" target="_blank" rel="noreferrer">Buy a seedpod!</a>
+                            <a className="BuyButton" href="https://opensea.io/collection/lunians" target="_blank" rel="noreferrer">Buy a seedpod!</a>
                         </BuySeedpod>
                         <SeedpodsRemaining>
                             <div style={{"fontFamily":"Holo-Jacket", "fontSize":"150%", "fontWeight":"bold", "color":"rgba(133,255,243)"}}>
@@ -775,35 +787,25 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                             <RemainingSeedpods max={50} remaining={availableNebulaSeedpods} />
                         </SeedpodsRemaining>
                     </SeedpodsAvailability>
-                </Hatching>
+                </Section>
+
+                <Section style={{"marginBottom":"1.5rem"}}>
+                    <Top>
+                        LUNIANS' ANATOMY
+                    </Top>
+                    <Paragraph>
+                        Lunians come out from hatched seedpods and present different looks and attributes.
+                        They have 12 body parts, each of them with many possible variations, giving millions of different combinations.
+                    </Paragraph>
+                    <Image src={lunianAnatomy} alt="lunians-anatomy" style={{"alignSelf":"center", "marginBottom":"1.5rem", 
+                        "height":"auto", "width":"100vw", "maxWidth":"1600px"}} />
+                </Section>
 
                 <div style={{"alignSelf":"center", "marginBottom":"1rem", "boxShadow":buttonShadow}} 
                     onClick={goToTop} onMouseEnter={press} onMouseLeave={unpress}>
                     <Image src={button} alt="go-top" style={{"alignSelf":"center", "marginBottom":"0", 
-                        "marginTop":"0", "height":"70px", "width":"auto", "paddingTop":buttonPaddingTop}} />
+                        "marginTop":"1.5rem", "height":"70px", "width":"auto", "paddingTop":buttonPaddingTop}} />
                 </div>
-
-                <Lore>
-                    <div style={{"display":"flex", "justifyContent":"space-between", "width":"100%"}}>
-                        <div style={{"borderTop":"groove rgb(179, 227, 227)", "flex":"0 1 35%"}}/>
-                        <Top>
-                            DISCOVER MORE
-                        </Top>
-                        <div style={{"borderTop":"groove rgb(179, 227, 227)", "flex":"0 1 35%"}}/>
-                    </div>
-                    <Grid>
-                        <Flip left>
-                            <MediumCard frontImage={blackhole} frontTitle="Origins" backText={abstract1} link={link1} padding={"0"}/>
-                            <MediumCard frontImage={lunia} frontTitle="Lunia" backText={abstract2} link={link2} padding={"2rem"}/>
-                            <MediumCard frontImage={lunianseedpodback} frontTitle="Lunian Seedpods" backText={abstract3} link={link3} padding={"0"}/>
-                            <MediumCard frontImage={poofpoof} frontTitle="Poof-poofs" backText={abstract4} link={link4} padding={"0"}/>
-                            <MediumCard frontImage={nebulaseedpodback} frontTitle="Nebula Seedpods" backText={abstract5} link={link5} padding={"0"}/>
-                            <MediumCard frontImage={roadmap} frontTitle="Roadmap" backText={abstract6} link={link6} padding={"0"}/>
-                            <MediumCard frontImage={saleDate} frontTitle="Sale Info" backText={abstract7} link={link7} padding={"0"}/>
-                            <MediumCard frontImage={lunianSample} frontTitle="Lunians" backText={abstract8} link={link8} padding={"0"}/>
-                        </Flip>
-                    </Grid>
-                </Lore>
 
                 <Reasons>
                     <Top>
@@ -842,6 +844,41 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                     </Card>
                     <Holo className="Holo" />
                 </Reasons>
+
+                <Reasons style={{"marginBottom":"0"}}>
+                    <Top>
+                        Powered by:
+                    </Top>
+                </Reasons>
+                <DivTextTransparency>
+                    <Link href="https://chain.link/" style={{"display":"flex", "flexDirection":"column"}}>
+                        <Flip>
+                            <DivImage>
+                                <OpenSea>
+                                    <ImagePartnersWidth src={chainlink} alt="chainlink-logo"/>
+                                </OpenSea>
+                            </DivImage>
+                        </Flip>
+                    </Link>
+                    <Link href="https://ipfs.io/" style={{"display":"flex", "flexDirection":"column"}}>
+                        <Flip>
+                            <DivImage>
+                                <OpenSea>
+                                    <ImagePartnersHeight src={ipfs} alt="ipfs-logo"/>
+                                </OpenSea>
+                            </DivImage>
+                        </Flip>
+                    </Link>
+                    <Link href="https://polygon.technology/" style={{"display":"flex", "flexDirection":"column"}}>
+                        <Flip>
+                            <DivImage>
+                                <OpenSea>
+                                    <ImagePartnersWidth src={polygon} alt="polygon-logo"/>
+                                </OpenSea>
+                            </DivImage>
+                        </Flip>
+                    </Link>
+                </DivTextTransparency>
 
                 <Reasons>
                     <Top>
@@ -976,7 +1013,35 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                     <Image src={roadmapFrame} alt="roadmap-frame" style={roadmapFrameStyle}/>
                 </div>
 
-                <Hatching>
+                <Lore>
+                    <div style={{"display":"flex", "justifyContent":"space-between", "width":"100%"}}>
+                        <div style={{"borderTop":"groove rgb(179, 227, 227)", "flex":"0 1 35%"}}/>
+                        <Top>
+                            DISCOVER MORE
+                        </Top>
+                        <div style={{"borderTop":"groove rgb(179, 227, 227)", "flex":"0 1 35%"}}/>
+                    </div>
+                    <Grid>
+                        <Flip left>
+                            <MediumCard frontImage={blackhole} frontTitle="Origins" backText={abstract1} link={link1} padding={"0"}/>
+                            <MediumCard frontImage={lunia} frontTitle="Lunia" backText={abstract2} link={link2} padding={"2rem"}/>
+                            <MediumCard frontImage={lunianseedpodback} frontTitle="Lunian Seedpods" backText={abstract3} link={link3} padding={"0"}/>
+                            <MediumCard frontImage={poofpoof} frontTitle="Poof-poofs" backText={abstract4} link={link4} padding={"0"}/>
+                            <MediumCard frontImage={nebulaseedpodback} frontTitle="Nebula Seedpods" backText={abstract5} link={link5} padding={"0"}/>
+                            <MediumCard frontImage={roadmap} frontTitle="Roadmap" backText={abstract6} link={link6} padding={"0"}/>
+                            <MediumCard frontImage={saleDate} frontTitle="Sale Info" backText={abstract7} link={link7} padding={"0"}/>
+                            <MediumCard frontImage={lunianSample} frontTitle="Lunians" backText={abstract8} link={link8} padding={"0"}/>
+                        </Flip>
+                    </Grid>
+                </Lore>
+
+                <div style={{"alignSelf":"center", "marginBottom":"1rem", "boxShadow":buttonShadow}} 
+                    onClick={goToTop} onMouseEnter={press} onMouseLeave={unpress}>
+                    <Image src={button} alt="go-top" style={{"alignSelf":"center", "marginBottom":"0", 
+                        "marginTop":"0", "height":"70px", "width":"auto", "paddingTop":buttonPaddingTop}} />
+                </div>
+
+                <Section>
                     <Top style={{"fontSize":"2.5rem"}}>
                         HATCHING
                     </Top>
@@ -985,7 +1050,7 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                         get a fantastic and enigmatic creature with random rarities.
                     </Paragraph>
                     <Work>
-                        {/*<Overlay display="flex">
+                        <Overlay display="flex">
                             <Wait>
                                 <Flash forever={true} duration={6000}>
                                     <p style={{"textAlign":"center", "fontFamily":"Holo-Jacket", "fontSize":"200%", "fontWeight":"bold"}}>
@@ -996,7 +1061,7 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                                     </p>
                                 </Flash>
                             </Wait>
-                        </Overlay>*/}
+                        </Overlay>
                         <Seedpods>
                             <Dropdown>
                                 <Dropdown.Toggle size="lg" disabled={disableSeedpodSelector} style={{"backgroundColor":backColor}}>
@@ -1072,10 +1137,16 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                             </div>
                         </Minted>
                     </Work>
-                </Hatching>
+                </Section>
 
                 {/*<Image src={questionmark} alt="seedpods-hatching" style={{"alignSelf":"center", 
                     "marginBottom":"1rem", "marginTop":"0"}} />*/}
+                
+                <div style={{"alignSelf":"center", "marginBottom":"1rem", "boxShadow":buttonShadow}} 
+                    onClick={goToTop} onMouseEnter={press} onMouseLeave={unpress}>
+                    <Image src={button} alt="go-top" style={{"alignSelf":"center", "marginBottom":"0", 
+                        "marginTop":"0", "height":"70px", "width":"auto", "paddingTop":buttonPaddingTop}} />
+                </div>
 
                 <Coming>More coming soon!</Coming>
 
@@ -1541,7 +1612,7 @@ const Minted = styled.div`
     }
 `;
 
-const Hatching = styled.div`
+const Section = styled.div`
     width: 100%;
     position: relative;
     text-align: center;
@@ -2395,7 +2466,7 @@ const RoadmapTitle = ({left, top, text, size, zoom, width, cycle}) => {
 const Unknown = styled.div`
     position: absolute;
     bottom: 4%;
-    left: 7.5%;
+    left: 4.5%;
     background-color: rgba(0,0,0,0.5);
     padding: 2px 8px;
     box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
@@ -2403,11 +2474,9 @@ const Unknown = styled.div`
     border: solid 5px rgb(143, 72, 184);
     font-style: italic;
     font-family: 'Ice Pixel7', sans-serif;
-    font-size: 280%;
-    @media(max-width: 900px) {
-        font-size: 250%;
-    }
+    font-size: 250%;
     @media(max-width: 700px) {
+        left: 7.5%;
         font-size: 130%;
     }
 `;
