@@ -8,6 +8,7 @@ import Flip from 'react-reveal/Flip';
 import Fade from 'react-reveal/Fade';
 import Zoom from 'react-reveal/Zoom';
 import Flash from 'react-reveal/Flash';
+import RubberBand from 'react-reveal/RubberBand';
 import Select from 'react-select';
 import SpinStretch from "react-cssfx-loading/lib/SpinStretch";
 import { FaCheck } from "react-icons/fa";
@@ -18,14 +19,15 @@ import { InfuraProvider, Web3Provider } from "@ethersproject/providers";
 import "@ethersproject/bignumber";
 import { addresses, abis, seedpodIds } from "@project/contracts";
 
-import { Image, ImageBannerLunians, ImagePartnersWidth, ImagePartnersHeight, Link } from "../components/index";
+import { Image, ImageBannerLunians, ImageMarketplace, ImagePoweredWidth, ImagePoweredHeight, ImagePartnersHeight, Link } from "../components/index";
 import MediumCard from "../components/flipCard";
 import { StyledCollection, Heading, Content, Paragraph, DivTextTransparency, DivImage, OpenSea } from 
 "../components/collectionPagesComponents";
 import RemainingSeedpods from "../components/RemainingSeedpods";
 import './BuyButton.css'; 
 
-import luniansLogo from "./../img/LuniansLogo.png";
+import lunian1 from "./../img/lunian11.png";
+import lunian2 from "./../img/lunian22.png";
 import numberNFTs from "./../img/909.png";
 import lunia from "./../img/Lunia.gif";
 import bannerLunians from "./../img/bannerLunians.jpg";
@@ -41,6 +43,12 @@ import tease from "./../img/Tease.png";
 import hatchingSeedpods from "./../img/HatchingSeedpods.png";
 import hatchingSeedpodsVert from "./../img/HatchingSeedpodsVert.png";
 import twoseedpods from "./../img/TwoSeedpods.gif";
+import opensea from "./../img/opensea.png";
+import ghostmarket from "./../img/GhostMarket.svg";
+import nftrade from "./../img/nftrade.png";
+import refinable from "./../img/refinable.png";
+import rarible from "./../img/rarible.png";
+import ultiarena from "./../img/ultiarena.png";
 import button from "./../img/Button.png";
 import lunianAnatomy from "./../img/LunianAnatomy.gif";
 import questionmark from "./../img/Question.gif";
@@ -60,6 +68,7 @@ import roadmapFrame from "./../img/Roadmap/frame.png";
 import chainlink from "./../img/chainlink.png";
 import polygon from "./../img/polygon.webp";
 import ipfs from "./../img/ipfs.png";
+import polygonAlliance from "./../img/Polygon-Alliance-badge.png";
 
 const toolTipCredits = "Planet and background created using Deep-Fold's <br/> Planet and Space generators";
 const abstract1 = "\"A riveting tale about forces of cosmic proportions\".";
@@ -317,6 +326,14 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
     const [availableNebulaSeedpods, setAvailableNebulaSeedpods] = useState(50);
     const [availableLunianSeedpods, setAvailableLunianSeedpods] = useState(859);
     const [getRemainingSeedpods, setGetRemainingSeedpods] = useState(true);
+    const [revealed1, setRevealed1] = useState(false);
+    const [revealed2, setRevealed2] = useState(false);
+    const [revealed3, setRevealed3] = useState(false);
+    const [revealed4, setRevealed4] = useState(false);
+    const [revealed5, setRevealed5] = useState(false);
+    const [revealed6, setRevealed6] = useState(false);
+    const [revealed7, setRevealed7] = useState(false);
+    const [revealed8, setRevealed8] = useState(false);
 
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
@@ -696,11 +713,11 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
     return (
         <StyledCollection>
             <div style={{"display":"flex", "flexDirection":"row", "justifyContent":"space-evenly"}}>
-                <Image src={luniansLogo} alt="lunians-logo" style={{"height":"20vmin", "margin":"0",
-                    "alignSelf":"flex-end", "transform":"rotate(-12deg)"}} />
+                <Image src={lunian1} alt="lunians-logo" style={{"height":"20vmin", "width":"auto", "margin":"0",
+                    "alignSelf":"flex-end", "transform":"rotate(-10deg)"}} />
                 <Heading>Lunians</Heading>
-                <Image src={luniansLogo} alt="lunians-logo" style={{"height":"20vmin", "margin":"0",
-                    "alignSelf":"flex-end", "transform":"rotate(12deg)"}} />
+                <Image src={lunian2} alt="lunians-logo" style={{"height":"20.6vmin", "width":"auto", "margin":"0",
+                    "alignSelf":"flex-end", "transform":"rotate(10deg)"}} />
             </div>
             <Content>
                 <SpaceBackground data-tip data-for="registerTipCredits" data-html="true">
@@ -789,6 +806,54 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                     </SeedpodsAvailability>
                 </Section>
 
+                <DivTextTransparency style={{"backgroundColor":"#0d0d0d70"}}>
+                    <Link href="https://opensea.io/collection/lunians" style={{"display":"flex", "flexDirection":"column"}}>
+                        <Flip>
+                            <DivImage>
+                                <OpenSea>
+                                    <ImageMarketplace src={opensea} alt="opensea-logo"/>
+                                </OpenSea>
+                            </DivImage>
+                        </Flip>
+                    </Link>
+                    <Link href="https://ghostmarket.io/collection/lunians/" style={{"display":"flex", "flexDirection":"column"}}>
+                        <Flip>
+                            <DivImage>
+                                <OpenSea>
+                                    <ImageMarketplace src={ghostmarket} alt="ghostmarket-logo"/>
+                                </OpenSea>
+                            </DivImage>
+                        </Flip>
+                    </Link>
+                    <Link href="https://nftrade.com/assets/polygon/0x9bbc90987c4f57df131710be776fe7ae076db6e9" style={{"display":"flex", "flexDirection":"column"}}>
+                        <Flip>
+                            <DivImage>
+                                <OpenSea>
+                                    <ImageMarketplace src={nftrade} alt="nftrade-logo"/>
+                                </OpenSea>
+                            </DivImage>
+                        </Flip>
+                    </Link>
+                    <Link href="https://lunians.refinable.store/" style={{"display":"flex", "flexDirection":"column"}}>
+                        <Flip>
+                            <DivImage>
+                                <OpenSea>
+                                    <ImageMarketplace src={refinable} alt="refinable-logo"/>
+                                </OpenSea>
+                            </DivImage>
+                        </Flip>
+                    </Link>
+                    <Link href="https://rarible.com/lunians" style={{"display":"flex", "flexDirection":"column"}}>
+                        <Flip>
+                            <DivImage>
+                                <OpenSea>
+                                    <ImageMarketplace src={rarible} alt="rarible-logo"/>
+                                </OpenSea>
+                            </DivImage>
+                        </Flip>
+                    </Link>
+                </DivTextTransparency>
+
                 <Section style={{"marginBottom":"1.5rem"}}>
                     <Top>
                         LUNIANS' ANATOMY
@@ -855,7 +920,7 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                         <Flip>
                             <DivImage>
                                 <OpenSea>
-                                    <ImagePartnersWidth src={chainlink} alt="chainlink-logo"/>
+                                    <ImagePoweredWidth src={chainlink} alt="chainlink-logo"/>
                                 </OpenSea>
                             </DivImage>
                         </Flip>
@@ -864,7 +929,7 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                         <Flip>
                             <DivImage>
                                 <OpenSea>
-                                    <ImagePartnersHeight src={ipfs} alt="ipfs-logo"/>
+                                    <ImagePoweredHeight src={ipfs} alt="ipfs-logo"/>
                                 </OpenSea>
                             </DivImage>
                         </Flip>
@@ -873,7 +938,24 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                         <Flip>
                             <DivImage>
                                 <OpenSea>
-                                    <ImagePartnersWidth src={polygon} alt="polygon-logo"/>
+                                    <ImagePoweredWidth src={polygon} alt="polygon-logo"/>
+                                </OpenSea>
+                            </DivImage>
+                        </Flip>
+                    </Link>
+                </DivTextTransparency>
+
+                <Reasons style={{"marginBottom":"0"}}>
+                    <Top>
+                        Partnered with:
+                    </Top>
+                </Reasons>
+                <DivTextTransparency>
+                    <Link href="https://www.polygonalliance.com/" style={{"display":"flex", "flexDirection":"column"}}>
+                        <Flip>
+                            <DivImage>
+                                <OpenSea>
+                                    <ImagePartnersHeight src={polygonAlliance} alt="polygon-alliance-logo"/>
                                 </OpenSea>
                             </DivImage>
                         </Flip>
@@ -907,13 +989,19 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                             <div>
                                 <p>
                                     <FaCheck style={{"margin":"0 2% 8px 2%", "color":"rgba(133,255,243,1)"}}/> 
-                                    Utility - Advantages, rewards and perks while holding an NFT
+                                    Advantages, rewards and perks while holding an NFT
                                 </p>
                             </div>
                             <div>
                                 <p>
                                     <FaCheck style={{"margin":"0 2% 8px 2%", "color":"rgba(133,255,243,1)"}}/> 
                                     Frozen metadata - Your NFTs' linked metadata will NEVER change
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <FaCheck style={{"margin":"0 2% 8px 2%", "color":"rgba(133,255,243,1)"}}/> 
+                                    Holders will get almost free mints in our future collections!
                                 </p>
                             </div>
                         </Fade>
@@ -962,41 +1050,59 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                     <Dot64Style> <BsDot size={dotsSize}/> </Dot64Style> <Dot65Style> <BsDot size={dotsSize}/> </Dot65Style>
                     <Dot66Style> <BsDot size={dotsSize}/> </Dot66Style> <Dot67Style><BsDot size={dotsSize}/> </Dot67Style>
                     <div onMouseEnter={handleCollapseEnter} onMouseLeave={handleMilesoneLeave} onClick={handleCollapseClick} style={{"position":"absolute", "left":"1.5%", "top":"11%", "width":"35%", "padding":collapseZoom}}>
-                        <Image src={roadmapBlackhole} alt="blackhole" style={{"width":"100%", "height":"auto", "marginBottom":"0"}}/>
+                        <RubberBand wait={1000} onReveal={ () => setRevealed1(true) }>
+                            <Image src={roadmapBlackhole} alt="blackhole" style={{"width":"100%", "height":"auto", "marginBottom":"0"}}/>
+                        </RubberBand>
                     </div>
                     <div onMouseEnter={handleDiscordEnter} onMouseLeave={handleMilesoneLeave} onClick={handleDiscordClick} style={{"position":"absolute", "left":"60%", "top":"13%", "width":"12.5%", "padding":discordZoom}}>
-                        <Image src={roadmapDiscord} alt="discord" 
-                            style={{"width":"100%", "height":"auto", "marginBottom":"0"}}/>
+                        <RubberBand when={revealed1} wait={1000} onReveal={ () => setRevealed2(true) }>
+                            <Image src={roadmapDiscord} alt="discord" 
+                                style={{"width":"100%", "height":"auto", "marginBottom":"0"}}/>
+                        </RubberBand>
                     </div>
                     <div onMouseEnter={handleRemainsEnter} onMouseLeave={handleMilesoneLeave} onClick={handleRemainsClick} style={{"position":"absolute", "right":"3%", "top":"25%","width":"15%", "padding":remainsZoom}}>
-                        <Image src={roadmapOpenSeedpod} alt="openSeedpod" 
-                            style={{"width":"100%", "height":"auto", "marginBottom":"0"}}/>
+                        <RubberBand when={revealed2} wait={1000} onReveal={ () => setRevealed3(true) }>
+                            <Image src={roadmapOpenSeedpod} alt="openSeedpod" 
+                                style={{"width":"100%", "height":"auto", "marginBottom":"0"}}/>
+                        </RubberBand>
                     </div>
                     <div onMouseEnter={handleDistributionEnter} onMouseLeave={handleMilesoneLeave} onClick={handleDistributionClick} style={{"position":"absolute", "left":"55%", "top":"35%","width":"15.5%", "padding":distributionZoom}}>
-                        <Image src={roadmapGoldSeedpod} alt="goldSeedpod" 
-                            style={{"width":"100%", "height":"auto", "marginBottom":"0"}}/>
+                        <RubberBand when={revealed3} wait={1000} onReveal={ () => setRevealed4(true) }>
+                            <Image src={roadmapGoldSeedpod} alt="goldSeedpod" 
+                                style={{"width":"100%", "height":"auto", "marginBottom":"0"}}/>
+                        </RubberBand>                                
                     </div>
                     <div onMouseEnter={handleDropEnter} onMouseLeave={handleMilesoneLeave} onClick={handleDropClick} style={{"position":"absolute", "left":"13%", "top":"38%","width":"15%", "padding":dropZoom}}>
-                        <Image src={roadmapGift} alt="gift" 
-                            style={{"width":"100%", "height":"auto", "marginBottom":"0"}}/>
+                        <RubberBand when={revealed4} wait={1000} onReveal={ () => setRevealed5(true) }>
+                            <Image src={roadmapGift} alt="gift" 
+                                style={{"width":"100%", "height":"auto", "marginBottom":"0"}}/>
+                        </RubberBand>
                     </div>
                     <div onMouseEnter={handleFusionEnter} onMouseLeave={handleMilesoneLeave} onClick={handleFusionClick} style={{"position":"absolute", "left":"43%", "top":"53%", "width":"10%", "padding":fusionZoom, "display":"flex", "flexDirection":"column"}}>
-                        <Image src={roadmapADN} alt="adn" 
-                            style={{"width":"100%", "height":"auto", "margin":"0 0 0.3rem 0"}}/>
-                        <Image src={roadmapAtom} alt="atom" 
-                            style={{"width":"100%", "height":"auto", "margin":"0.3rem 0 0 0"}}/>
+                        <RubberBand when={revealed5} wait={1000} onReveal={ () => setRevealed6(true) }>
+                            <Image src={roadmapADN} alt="adn" 
+                                style={{"width":"100%", "height":"auto", "margin":"0 0 0.3rem 0"}}/>
+                            <Image src={roadmapAtom} alt="atom" 
+                                style={{"width":"100%", "height":"auto", "margin":"0.3rem 0 0 0"}}/>
+                        </RubberBand>
                     </div>
                     <div onMouseEnter={handleVisualizerEnter} onMouseLeave={handleMilesoneLeave} onClick={handleVisualizerClick} style={{"position":"absolute", "right":"10%", "top":"58%", "width":"15%", "padding":visualizerZoom}}>
-                        <Image src={roadmapNetwork} alt="singular-lunians-net" 
-                            style={{"width":"100%", "height":"auto", "marginBottom":"0"}}/>
+                        <RubberBand when={revealed6} wait={1000} onReveal={ () => setRevealed7(true) }>
+                            <Image src={roadmapNetwork} alt="singular-lunians-net" 
+                                style={{"width":"100%", "height":"auto", "marginBottom":"0"}}/>
+                        </RubberBand>
                     </div>
                     <div onMouseEnter={handleStationEnter} onMouseLeave={handleMilesoneLeave} onClick={handleStationClick} style={{"position":"absolute", "left":"6%", "top":"60%", "width":"15%", "padding":stationZoom}}>
-                        <Image src={roadmapStation} alt="space-station" 
-                            style={{"width":"100%", "height":"auto", "marginBottom":"0"}}/>
+                        <RubberBand when={revealed7} wait={1000} onReveal={ () => setRevealed8(true) }>
+                            <Image src={roadmapStation} alt="space-station" 
+                                style={{"width":"100%", "height":"auto", "marginBottom":"0"}}/>
+                        </RubberBand>
                     </div>
                     <div onMouseEnter={handleSetiEnter} onMouseLeave={handleMilesoneLeave} onClick={handleSetiClick} style={{"position":"absolute", "left":"20%", "top":"77%", "width":"12.5%", "padding":setiZoom}}>
-                        <Image src={roadmapSETI} alt="seti-logo" 
-                            style={{"width":"100%", "height":"auto", "marginBottom":"0"}}/>
+                        <RubberBand when={revealed8}>
+                            <Image src={roadmapSETI} alt="seti-logo" 
+                                style={{"width":"100%", "height":"auto", "marginBottom":"0"}}/>
+                        </RubberBand>
                     </div>
                     <RoadmapTitle text={"The Collapse"} left={"17.5%"} top={"12%"} size={roadmapTextSize} zoom={collapseZoom}/>
                     <RoadmapTitle text={"The Gathering"} left={"51.5%"} top={"20%"} size={roadmapTextSize} zoom={discordZoom}/>
@@ -1046,7 +1152,7 @@ const Lunians = ({ account, refreshInventory, setRefreshInventory }) => {
                         HATCHING
                     </Top>
                     <Paragraph>
-                        Hatch your seedpods here when planet Lunia had unveiled "all" its mysteries, and 
+                        Hatch your seedpods here when planet Lunia has unveiled "all" its mysteries, and 
                         get a fantastic and enigmatic creature with random rarities.
                     </Paragraph>
                     <Work>
@@ -1702,6 +1808,7 @@ const Dot1Style = styled.div`
     position: absolute;
     left: 31%;
     top: 19%;
+    color: #e1ff8d;
     @media(max-width: 900px) {
         display: none;
     }
@@ -1711,6 +1818,7 @@ const Dot2Style = styled.div`
     position: absolute;
     left: 35%;
     top: 18%;
+    color: #e1ff8d;
 `;
 
 const Dot3Style = styled.div`

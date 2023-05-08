@@ -53,7 +53,7 @@ export const Image = styled.img`
   pointer-events: none;
 `;
 
-export const ImagePartnersWidth = styled.img`
+export const ImagePoweredWidth = styled.img`
   pointer-events: none;
   height: 100px;
   width: auto;
@@ -64,7 +64,7 @@ export const ImagePartnersWidth = styled.img`
   }
 `;
 
-export const ImagePartnersHeight = styled.img`
+export const ImagePoweredHeight = styled.img`
   pointer-events: none;
   height: 100px;
   width: auto;
@@ -81,6 +81,53 @@ export const ImagePartnersHeight = styled.img`
 
   @media screen and (max-width: 640px) {
     height: 55px;
+    width: auto;
+  }
+`;
+
+export const ImageMarketplace = styled.img`
+  pointer-events: none;
+  height: 125px;
+  width: auto;
+
+  @media screen and (max-width: 1024px) {
+    height: 110px;
+    width: auto;
+  }
+
+  @media screen and (max-width: 700px) {
+    height: 80px;
+    width: auto;
+  }
+
+  @media screen and (max-width: 640px) {
+    height: 70px;
+    width: auto;
+  }
+
+  @media screen and (max-width: 480px) {
+    height: 60px;
+    width: auto;
+  }
+`;
+
+export const ImagePartnersHeight = styled.img`
+  pointer-events: none;
+  height: 125px;
+  width: auto;
+
+  @media screen and (max-width: 1024px) {
+    height: 110px;
+    width: auto;
+  }
+
+  @media screen and (max-width: 700px) {
+    height: 90px;
+    width: auto;
+  }
+
+  @media screen and (max-width: 640px) {
+    height: 80px;
     width: auto;
   }
 `;

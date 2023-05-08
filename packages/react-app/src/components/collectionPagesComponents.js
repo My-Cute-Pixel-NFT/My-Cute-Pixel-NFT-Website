@@ -72,13 +72,25 @@ export const DivTextImage = styled.div`
 export const DivTextTransparency = styled.div`
     display: flex;
     width: 105.3%;
-    height: 216px;
+    height: 210px;
     margin-left: -2.7%;
     margin-top: 1rem;
     align-items: center;
     justify-content: space-around;
     margin-bottom: 2rem;
-    background-color: #6c718c80;
+    background-color: #6c718c40;
+
+    @media screen and (max-width: 1024px) {
+      height: 180px;
+    }
+  
+    @media screen and (max-width: 700px) {
+      height: 150px;
+    }
+  
+    @media screen and (max-width: 640px) {
+      height: 130px;
+    }
 `;
 
 export const DivImage = styled.div`
